@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="css/swiper.min.css">
+    
+    <!-- Link Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- Link Bootstrap CSS -->
+    <link rel="stylesheet" href="css/darkly.min.css">
+
+    <!-- Demo styles -->
+    <style>
+    html, body {
+        position: relative;
+        height: 100%;
+    }
+    body {
+//        background: #eee;
+        background: #000;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+//        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+        
+    .swiper-container, .swiper-container-new, .non-swiper-container {
+/*
+        margin: 20px auto;
+        width: 300px;
+        height: 300px;
+        left: 50%;
+        top: 50%;
+        margin-left: -150px;
+        margin-top: -150px;
+*/
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        
+        text-align: center;
+        font-size: 18px;
+        background: #000;
+        
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+        
+    .FAQ {
+        text-align: left;
+/*
+        margin-top: -2em;
+
+        padding-left: 2em;
+        padding-right: 2em;
+        margin-left: -2em;
+        margin-right: -2em;
+*/
+    }
+        
+    .formNewProject {
+        margin-top: -1em;
+        text-align: left;
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+        
+    .vertical-center {
+        display: inline-block;
+        vertical-align: middle !important;
+        float: none;            
+    }
+        
+    .vertical-top {
+        display: inline-block;
+        vertical-align: top !important;
+        float: none;
+    }
+        
+    .vertical-bottom {
+        display: inline-block;
+        vertical-align: bottom !important;
+        float: none;            
+    }
+        
+    .v-divider {
+         margin-left: 5px;
+         margin-right: 5px;
+         width: 2px;
+         height: 100%;
+         border-left: 1px solid white;
+    }
+        
+/*
+        
+    .FAQ > img {
+        align-content: center;
+    }   
+*/
+    </style>
+    
+    <script type="text/javascript">
+    
+        function _i(x) {
+            return _(x).innerHTML;
+        }
+
+        function _n(x) {
+            return document.getElementsByName(x);
+        }
+
+        function _(x) {
+            return document.getElementById(x);
+        }
+        
+        function showv_ele(show) {
+            _(show).style.visibility="visible";
+        }
+
+        function hidev_ele(hide) {
+            _(hide).style.visibility="hidden";
+        }
+        
+        function show_ele(show) {
+            _(show).style.display="block";
+        }
+
+        function hide_ele(hide) {
+            _(hide).style.display="none";
+        }
+    
+        function resetSections() {
+            hide_ele("OpenNew");
+//            hide_ele("ResultAnimation_14");
+        }
+        
+        function hideAll() {
+            hide_ele("OpenNew");
+            hide_ele("OpenExisting");
+            hide_ele("OpenReview");
+            hide_ele("OpenReports");
+            hide_ele("OpenFAQ");
+            
+            /* Individual slides */
+//            hide_ele("newResponse");
+            return true;
+        }
+        
+        function hideAllandShowFAQ() {
+            hideAll();
+            show_ele("OpenFAQ");
+            return true;
+        }
+        
+        function runOpenNew() {
+            hideAll();
+            show_ele("OpenNew");
+            
+//            var output = $('.swiper-wrapper-new');
+//            var landmark = '<div class="swiper-slide">Response</div>';
+//            output.append(landmark);
+//            var swiper = _("swiper-container-new");
+//            swiper.slideNext(false, 300);
+            
+//            var output = $('.swiper-wrapper-new');
+//            var output = $('.swiper-wrapper-new');
+//            var landmark = '<div class="swiper-slide">Response</div>';
+//            var slide = output.append(landmark);
+//            var swiper = SwiperNew;
+//            slide.swipeNext();
+//            swiper.swipeNext();
+            
+//            show_ele("newResponse");
+//            var swiper = SwiperNew;
+//            swiper.swipeNext();
+            
+        }
+        
+        function runOpenExisting() {
+            hideAll();
+            show_ele("OpenExisting");
+        }
+        
+        function runOpenReview() {
+            hideAll();
+            show_ele("OpenReview");
+        }
+        
+        function runOpenReports() {
+            hideAll();
+            show_ele("OpenReports");
+        }
+        
+        
+    </script>
+</head>
+<body onload="hideAllandShowFAQ();">
+    
+<!--    <div class="container-fluid">-->
+    
+<nav class="navbar navbar-default navbar-fixed-bottom bg-primary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#" onclick="hideAllandShowFAQ();"><img alt="ERGOAnalysis Small Logo" src="images/ERGOAnalysisLogo0717.png" width="64" height="24"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#" onclick="runOpenNew(); return false;">New Project</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#" onclick="runOpenExisting(); return false;">Existing Project</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#" onclick="runOpenReview(); return false;">Review</a></li>
+            <li><a href="#" onclick="runOpenReports(); return false;">Reports</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Videos</a></li>
+        <li><a href="#">Pictures</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>    
+<!--    </div>-->
+    
+    
+<!--    <div class="container-fluid">-->
+    
+    <!-- Swiper OpenNew -->
+    <div id="OpenNew" class="swiper-container-new">
+        <div class="swiper-wrapper swiper-wrapper-new">
+        
+            <div class="swiper-slide">
+                <div class="jumbotron FAQ col-md-9 col-lg-11">
+                <form class="form-horizontal col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+
+                <div class="row col-lg-12">
+                    <h2>Create New Project</h2>
+                    <hr>
+                </div>
+
+                <div class="row col-lg-12">
+                    <div class="col-xs-6 col-md-6 col-lg-4">
+                        <div class="form-group">
+                            <label for="forName" class="col-sm-1 col-md-1 col-lg-3 control-label">Name</label>
+                            <div class="col-sm-11 col-md-11 col-lg-9">
+                                <input type="text" class="form-control" id="formIdName" placeholder="Name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="forLocation" class="col-sm-1 col-md-1 col-lg-3 control-label">Location</label>
+                            <div class="col-sm-11 col-md-11 col-lg-9">
+                                <input type="text" class="form-control" id="formIdLocation" placeholder="Location" size=25 >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="forDate" class="col-sm-1 col-md-1 col-lg-3 control-label">Date</label>
+                            <div class="col-sm-11 col-md-11 col-lg-9">
+                                <input type="text" class="form-control" id="formIdDate" placeholder="Date" size=25 >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6 col-md-6 col-lg-4">
+                        <div class="form-group">
+                            <label for="forTime" class="col-sm-1 col-md-1 col-lg-3 control-label">Time</label>
+                            <div class="col-sm-11 col-md-11 col-lg-9">
+                                <input type="text" class="form-control" id="formIdTime" placeholder="Time" size=25 >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="forNotes" class="col-sm-1 col-md-1 col-lg-3 control-label">Notes</label>
+                            <div class="col-sm-11 col-md-11 col-lg-9">
+                                <textarea class="form-control" id="formIdNotes" placeholder="Notes" rows="5" cols="20" ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row col-md-12">
+                    <div class="col-md-3 col-md-offset-9">
+                        <p class=" pull-right"><a id="NewProject" class="btn btn-primary btn-lg" href="#" onclick="runOpenNew(); return false;" role="button">Create New Project</a></p>
+                    </div>
+                </div>
+
+                </form>
+                </div>
+            </div>
+            
+            <div class="swiper-slide" id="newResponse">
+                <div class="jumbotron FAQ col-md-9 col-lg-11">
+<!--                <form class="form-horizontal col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">-->
+
+                <div class="row col-lg-12">
+                    <h2>New Project Created</h2>
+                    <hr>
+                    <p>Continue to 'Add a New Task'</p>
+                </div>
+
+<!--
+                <div class="row">
+                    <div class="col-xs-4 col-md-4 col-lg-4">
+                        <div class="form-group">
+                            <label for="forName" class="col-sm-1 col-md-1 col-lg-3 control-label">Name</label>
+                            <div class="col-sm-11 col-md-11 col-lg-9">
+                                <input type="text" class="form-control" id="formIdName" placeholder="Name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="forLocation" class="col-sm-1 col-md-1 col-lg-3 control-label">Location</label>
+                            <div class="col-sm-11 col-md-11 col-lg-9">
+                                <input type="text" class="form-control" id="formIdLocation" placeholder="Location" size=25 >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="forDate" class="col-sm-1 col-md-1 col-lg-3 control-label">Date</label>
+                            <div class="col-sm-11 col-md-11 col-lg-9">
+                                <input type="text" class="form-control" id="formIdDate" placeholder="Date" size=25 >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 col-md-4 col-lg-4">
+                        <div class="form-group">
+                            <label for="forTime" class="col-sm-1 col-md-1 col-lg-3 control-label">Time</label>
+                            <div class="col-sm-11 col-md-11 col-lg-9">
+                                <input type="text" class="form-control" id="formIdTime" placeholder="Time" size=25 >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="forNotes" class="col-sm-1 col-md-1 col-lg-3 control-label">Notes</label>
+                            <div class="col-sm-11 col-md-11 col-lg-9">
+                                <textarea class="form-control" id="formIdNotes" placeholder="Notes" rows="5" cols="20" ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+-->
+
+<!--
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class=" pull-right"><a class="btn btn-primary btn-lg" href="#" onclick="runOpenNew(); return false;" role="button">Create New Project</a></p>
+                    </div>
+                </div>
+-->
+
+<!--                </form>-->
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+
+    
+    <!-- Swiper OpenExisting -->
+    <div id="OpenExisting" class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="row">
+                    <div class="row">
+                        <h3>Open Existing Project</h3>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Swiper Review -->
+    <div id="OpenReview" class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="row">
+                    <div class="row">
+                        <h3>Review Project</h3>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Swiper Reports -->
+    <div id="OpenReports" class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="row">
+                    <div class="row">
+                        <h3>Project Reports</h3>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Swiper FAQ -->
+    <div id="OpenFAQ" class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="row">
+                    <div class="row">
+                        <img src="images/ERGOAnalysisLogo0715.png" class="img-responsive">
+                    </div>
+                    <div class="row">
+                        <h2>Welcome . . . Slide to the left to start.</h2>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="col-md-1">
+                <div class="swiper-button-prev"></div>
+                </div>
+                <div class="jumbotron col-md-10 FAQ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/ERGOAnalysisLogo0715.png" height="100px" width="260px" class="img-responsive" />
+                            </div>
+                            <div class="col-md-10">
+                              <h2>New Project</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/menuShot-New07190815.png" class="img-responsive" >
+                            </div>
+                            <div class="col-md-10">
+                                <h3 class="vertical-top">Open New Project</h3>
+                                <p>Use this option to create a new project when at a new location.</p>
+                                <p>The second screen will allow you to enter location information such as: Location name, Date, Time, Notes, etc.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-9">
+                          <a class="btn btn-primary btn-lg" href="#" onclick="runOpenNew(); return false;" role="button">Open New Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="col-md-1">
+                <div class="swiper-button-prev"></div>
+                </div>
+                <div class="jumbotron col-md-10 FAQ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/ERGOAnalysisLogo0715.png" height="100px" width="260px" class="img-responsive" />
+                            </div>
+                            <div class="col-md-10">
+                              <h2>Existing Project</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/menuShot-Existing07190815.png" class="img-responsive" >
+                            </div>
+                            <div class="col-md-10">
+                              <h3>Open Existing Project</h3>
+                              <p>Use this option to open an existing project.</p>
+                              <p>Changes can be amde, reviews, etc.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-8">
+                          <a class="btn btn-primary btn-lg" href="#" onclick="runOpenExisting(); return false;" role="button">Open Existing Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="col-md-1">
+                <div class="swiper-button-prev"></div>
+                </div>
+                <div class="jumbotron col-md-10 FAQ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/ERGOAnalysisLogo0715.png" height="100px" width="260px" class="img-responsive" />
+                            </div>
+                            <div class="col-md-10">
+                              <h2>Review</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/menuShot-Review07190815.png" class="img-responsive" >
+                            </div>
+                            <div class="col-md-10">
+                              <h3>Review</h3>
+                              <p>Use this option to open and review an existing project.</p>
+                              <p>Demonstrations can be setup here.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-9">
+                          <a class="btn btn-primary btn-lg" href="#" onclick="runOpenReview(); return false;" role="button">Open Review</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="col-md-1">
+                <div class="swiper-button-prev"></div>
+                </div>
+                <div class="jumbotron col-md-10 FAQ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/ERGOAnalysisLogo0715.png" height="100px" width="260px" class="img-responsive" />
+                            </div>
+                            <div class="col-md-10">
+                              <h2>Reports</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/menuShot-Reports07190815.png" class="img-responsive" >
+                            </div>
+                            <div class="col-md-10">
+                              <h3>Reports</h3>
+                              <p>Use this option to create reports for existing project.</p>
+                              <p>Output such as screen, text documents, presentations, videos, etc.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-9">
+                          <a class="btn btn-primary btn-lg" href="#" onclick="runOpenReports(); return false;" role="button">Open Reports</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+<!--                    <div class="swiper-button-next"></div>-->
+                </div>
+            </div>
+            
+        </div>
+    </div>
+<!--    </div>-->
+    
+    <!-- Link jQuery -->
+    <script src="js/jquery-2.2.4.min.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="js/swiper.min.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+    
+    <!-- Initialize Swiper -->
+    <script>
+        
+        function _(x) {
+            return document.getElementById(x);
+        }
+        
+        function show_ele(show) {
+            _(show).style.display="block";
+        }
+        
+        var swiper = new Swiper('.swiper-container', {
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            spaceBetween: 50,
+            effect: 'cube',
+            grabCursor: true,
+            cube: {
+                shadow: false,
+                slideShadows: false
+            }
+        });
+        
+        var swiperNew = new Swiper('.swiper-container-new', {
+            observer: true,
+            spaceBetween: 50,
+            effect: 'slide',
+            grabCursor: true
+        });
+        
+//    var swiperV = new Swiper('.swiper-container-v', {
+//        pagination: '.swiper-pagination-v',
+//        paginationClickable: true,
+//        direction: 'vertical',
+//        spaceBetween: 50
+//    });
+//    var swiperH = new Swiper('.swiper-container-h', {
+//        pagination: '.swiper-pagination-h',
+//        paginationClickable: true,
+//        nextButton: '.swiper-button-next',
+//        spaceBetween: 50,
+//        effect: 'cube',
+//        grabCursor: true,
+//        cube: {
+//            shadow: false,
+//            slideShadows: false
+//        }
+//    });
+    </script>
+</body>
+</html>
