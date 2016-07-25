@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ERGO Analysis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="css/swiper.min.css">
+    
+    <!-- Link Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- Link Bootstrap CSS -->
+    <link rel="stylesheet" href="css/darkly.min.css">
+    
+<!--
+    <link rel="stylesheet" href="css/nouislider.min.css" rel="stylesheet">
+    <script src="js/nouislider.min.js"></script>
+-->
+
+    <!-- Demo styles -->
+    <style>
+    html, body {
+/*        position: relative;*/
+        height: 100%;
+        width: 100%;
+    }
+    body {
+//        background: #eee;
+        background: #000;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+//        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+        
+        body2{background:#fff;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:14px;color:#000;margin:0;padding:0;}
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+            padding-top: 5em;
+            padding-bottom: 0em;
+            padding-left: 0em;
+            padding-right: 0em;
+        }
+        
+        .swiper-slide {
+/*
+            background-position: center;
+            background-size:cover;
+*/
+            width:300px;
+            height; 100%;
+/*            height:300px;*/
+        }
+        
+    .swiper-container2 {
+/*
+        margin: 20px auto;
+        width: 300px;
+        height: 300px;
+        left: 50%;
+        top: 50%;
+        margin-left: -150px;
+        margin-top: -150px;
+*/
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+        
+    .swiper-slide2 {
+        background-position: center;
+        background-size: cover;
+        
+        text-align: center;
+        font-size: 18px;
+        background: #000;
+        
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+        
+        
+    .FAQ {
+        text-align: left;
+/*
+        margin-top: -2em;
+
+        padding-left: 2em;
+        padding-right: 2em;
+        margin-left: -2em;
+        margin-right: -2em;
+*/
+    }
+        
+    .formNewSite {
+        margin-top: -1em;
+        text-align: left;
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+        
+    .vertical-center {
+        display: inline-block;
+        vertical-align: middle !important;
+        float: none;            
+    }
+        
+    .vertical-top {
+        display: inline-block;
+        vertical-align: top !important;
+        float: none;
+    }
+        
+    .vertical-bottom {
+        display: inline-block;
+        vertical-align: bottom !important;
+        float: none;            
+    }
+        
+    .v-divider {
+         margin-left: 5px;
+         margin-right: 5px;
+         width: 2px;
+         height: 100%;
+         border-left: 1px solid white;
+    }
+        
+    .wow {
+        background-color: crimson;
+    }
+        
+    .wow2 {
+        background-color: goldenrod;
+    }
+        
+    .Describe {
+        text-align: left;
+    }
+        
+        .swipe-wrapper {
+/*
+            padding-left: 3em;
+            margin-right: 3em;
+*/
+        }
+
+        
+        .siteButton {
+/*
+            padding-left: 2em;
+            padding-right: 2em;
+*/
+        }
+        
+        .panHeader {
+            padding: -1em 0 0 1em;
+            margin-top: 1em;
+        }
+        
+        .panFooter {
+            padding-left: 1em;
+        }
+/*
+        
+    .FAQ > img {
+        align-content: center;
+    }   
+*/
+    </style>
+    
+    <script type="text/javascript">
+        function _(x) {
+            return document.getElementById(x);
+        }
+        
+        function getEncodeData() {
+            var encodeData = '';
+            encodeData = 'data:text/html;charset=utf-8,';
+            return encodeData;
+        }
+        
+        function getSiteData() {
+            /* Make db call here and create table */
+        }
+        
+        function getSiteHTML() {
+            var htmlCode = '';
+            
+            var d = '';
+            var e = '<h4>Sites</h4>';
+            var f = '';
+            var g = '';
+            var h = '';
+            var i = '';
+            var j = '';
+            var k = '';
+            var z = 'Create New Site';
+            
+            htmlCode += '<div class="swiper-slide">';
+            htmlCode += '<div class="panel panel-primary">';
+            htmlCode += '<div class="panel-heading">';
+//            htmlCode += '<span class="badge pull-right">';
+//            htmlCode += d;
+//            htmlCode += '</span>';
+            htmlCode += '<h2 class="panel-title">';
+            htmlCode += e;
+            htmlCode += '</h2>';
+            htmlCode += '</div>';            
+            htmlCode += '<div class="panel-body">';
+            htmlCode += '<p>';
+            htmlCode += f;
+            htmlCode += '</p>';
+            htmlCode += '<p>';
+            htmlCode += g;
+            htmlCode += '</p>';
+//            htmlCode += '<ul class="list-group">';
+//            htmlCode += '<li class="list-group-item"><span class="label label-primary">';
+//            htmlCode += h;
+//            htmlCode += '</span>';
+//            htmlCode += '<span class="badge">';
+//            htmlCode += i;
+//            htmlCode += '</span></li>';
+//            htmlCode += '<li class="list-group-item"><span class="label label-warning">';
+//            htmlCode += j;
+//            htmlCode += '</span>';
+//            htmlCode += '<span class="badge">';
+//            htmlCode += k;
+//            htmlCode += '</span></li></ul>';
+            htmlCode += '<div class="row panFooter">';
+            htmlCode += '<a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-lg btn-primary">';
+            htmlCode += z;
+            htmlCode += '</a>';
+            htmlCode += '</div>';
+            htmlCode += '</div>';
+            htmlCode += '</div>';
+            htmlCode += '</div>';
+            
+            var d = 'April 11, 2016';
+            var e = 'Columbia Packing Co Inc';
+            var f = 'Dallas, Texas';
+            var g = 'Shot several videos and stills. Aliquam sollicitudin non mauris nec ultricies. Nulla tristique eleifend fermentum.';
+            var h = 'Videos';
+            var i = '15';
+            var j = 'Pictures';
+            var k = '10';
+            var z = 'Open Site';
+            
+            htmlCode += '<div class="swiper-slide">';
+            htmlCode += '<div class="panel panel-primary">';
+            htmlCode += '<div class="panel-heading">';
+            htmlCode += '<span class="badge pull-right">';
+            htmlCode += d;
+            htmlCode += '</span>';
+            htmlCode += '<h2 class="panel-title">';
+            htmlCode += e;
+            htmlCode += '</h2>';
+            htmlCode += '</div>';            
+            htmlCode += '<div class="panel-body">';
+            htmlCode += '<p>';
+            htmlCode += f;
+            htmlCode += '</p>';
+            htmlCode += '<p>';
+            htmlCode += g;
+            htmlCode += '</p>';
+            htmlCode += '<ul class="list-group">';
+            htmlCode += '<li class="list-group-item"><span class="label label-primary">';
+            htmlCode += h;
+            htmlCode += '</span>';
+            htmlCode += '<span class="badge">';
+            htmlCode += i;
+            htmlCode += '</span></li>';
+            htmlCode += '<li class="list-group-item"><span class="label label-warning">';
+            htmlCode += j;
+            htmlCode += '</span>';
+            htmlCode += '<span class="badge">';
+            htmlCode += k;
+            htmlCode += '</span></li></ul>';
+            htmlCode += '<div class="row panFooter">';
+            htmlCode += '<a href="#" class="btn btn-lg btn-primary">';
+            htmlCode += z;
+            htmlCode += '</a>';
+            htmlCode += '</div>';
+            htmlCode += '</div>';
+            htmlCode += '</div>';
+            htmlCode += '</div>';
+            
+            var d = 'April 18, 2016';
+            var e = 'Western Aviation';
+            var f = 'Houston, Texas';
+            var g = 'Met with and had lunch with the general contractor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.';
+            var h = 'Videos';
+            var i = '15';
+            var j = 'Pictures';
+            var k = '10';
+            var z = 'Open Site';
+            
+            htmlCode += '<div class="swiper-slide">';
+            htmlCode += '<div class="panel panel-primary">';
+            htmlCode += '<div class="panel-heading">';
+            htmlCode += '<span class="badge pull-right">';
+            htmlCode += d;
+            htmlCode += '</span>';
+            htmlCode += '<h2 class="panel-title">';
+            htmlCode += e;
+            htmlCode += '</h2>';
+            htmlCode += '</div>';            
+            htmlCode += '<div class="panel-body">';
+            htmlCode += '<p>';
+            htmlCode += f;
+            htmlCode += '</p>';
+            htmlCode += '<p>';
+            htmlCode += g;
+            htmlCode += '</p>';
+            htmlCode += '<ul class="list-group">';
+            htmlCode += '<li class="list-group-item"><span class="label label-primary">';
+            htmlCode += h;
+            htmlCode += '</span>';
+            htmlCode += '<span class="badge">';
+            htmlCode += i;
+            htmlCode += '</span></li>';
+            htmlCode += '<li class="list-group-item"><span class="label label-warning">';
+            htmlCode += j;
+            htmlCode += '</span>';
+            htmlCode += '<span class="badge">';
+            htmlCode += k;
+            htmlCode += '</span></li></ul>';
+            htmlCode += '<div class="row panFooter">';
+            htmlCode += '<a href="#" class="btn btn-lg btn-primary">';
+            htmlCode += z;
+            htmlCode += '</a>';
+            htmlCode += '</div>';
+            htmlCode += '</div>';
+            htmlCode += '</div>';
+            htmlCode += '</div>';
+            
+            var d = 'May 23, 2016';
+            var e = 'Packing House Market';
+            var f = 'Dallas, Texas';
+            var g = 'Used memory card #003,#004. Save several documents. Proin non lacus nec ligula tincidunt sollicitudin. Fusce sodales imperdiet scelerisque.';
+            var h = 'Videos';
+            var i = '15';
+            var j = 'Pictures';
+            var k = '10';
+            var z = 'Open Site';
+            
+            htmlCode += '<div class="swiper-slide">';
+            htmlCode += '<div class="panel panel-primary">';
+            htmlCode += '<div class="panel-heading">';
+            htmlCode += '<span class="badge pull-right">';
+            htmlCode += d;
+            htmlCode += '</span>';
+            htmlCode += '<h2 class="panel-title">';
+            htmlCode += e;
+            htmlCode += '</h2>';
+            htmlCode += '</div>';            
+            htmlCode += '<div class="panel-body">';
+            htmlCode += '<p>';
+            htmlCode += f;
+            htmlCode += '</p>';
+            htmlCode += '<p>';
+            htmlCode += g;
+            htmlCode += '</p>';
+            htmlCode += '<ul class="list-group">';
+            htmlCode += '<li class="list-group-item"><span class="label label-primary">';
+            htmlCode += h;
+            htmlCode += '</span>';
+            htmlCode += '<span class="badge">';
+            htmlCode += i;
+            htmlCode += '</span></li>';
+            htmlCode += '<li class="list-group-item"><span class="label label-warning">';
+            htmlCode += j;
+            htmlCode += '</span>';
+            htmlCode += '<span class="badge">';
+            htmlCode += k;
+            htmlCode += '</span></li></ul>';
+            htmlCode += '<div class="row panFooter">';
+            htmlCode += '<a href="#" class="btn btn-lg btn-primary">';
+            htmlCode += z;
+            htmlCode += '</a>';
+            htmlCode += '</div>';
+            htmlCode += '</div>';
+            htmlCode += '</div>';
+            htmlCode += '</div>';
+            
+            var d = 'May 30, 2016';
+            var e = 'Lockheed Martin Corp';
+            var f = 'San Antonio, Texas';
+            var g = 'Met with and had lunch with the general contractor. Donec elementum maximus eros non scelerisque. Morbi nec sem purus.';
+            var h = 'Videos';
+            var i = '15';
+            var j = 'Pictures';
+            var k = '10';
+            var z = 'Open Site';
+            
+            htmlCode += '<div class="swiper-slide">';
+            htmlCode += '<div class="panel panel-primary">';
+            htmlCode += '<div class="panel-heading">';
+            htmlCode += '<span class="badge pull-right">';
+            htmlCode += d;
+            htmlCode += '</span>';
+            htmlCode += '<h2 class="panel-title">';
+            htmlCode += e;
+            htmlCode += '</h2>';
+            htmlCode += '</div>';            
+            htmlCode += '<div class="panel-body">';
+            htmlCode += '<p>';
+            htmlCode += f;
+            htmlCode += '</p>';
+            htmlCode += '<p>';
+            htmlCode += g;
+            htmlCode += '</p>';
+            htmlCode += '<ul class="list-group">';
+            htmlCode += '<li class="list-group-item"><span class="label label-primary">';
+            htmlCode += h;
+            htmlCode += '</span>';
+            htmlCode += '<span class="badge">';
+            htmlCode += i;
+            htmlCode += '</span></li>';
+            htmlCode += '<li class="list-group-item"><span class="label label-warning">';
+            htmlCode += j;
+            htmlCode += '</span>';
+            htmlCode += '<span class="badge">';
+            htmlCode += k;
+            htmlCode += '</span></li></ul>';
+            htmlCode += '<div class="row panFooter">';
+            htmlCode += '<a href="#" class="btn btn-lg btn-primary">';
+            htmlCode += z;
+            htmlCode += '</a>';
+            htmlCode += '</div>';
+            htmlCode += '</div>';
+            htmlCode += '</div>';
+            htmlCode += '</div>';
+            
+            var d = 'June 10, 2016';
+            var e = 'Dallas City Packing Inc';
+            var f = 'Dallas, Texas';
+            var g = 'Had to use the backup memory card. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla est mauris, feugiat id elementum nec, fermentum id enim. Vivamus ac scelerisque erat. Aenean eleifend mi nec varius pharetra. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis eleifend leo eget ultricies dictum. Fusce eget viverra nulla. Praesent iaculis hendrerit nisl.';
+            var h = 'Videos';
+            var i = '15';
+            var j = 'Pictures';
+            var k = '10';
+            var z = 'Open Site';
+            
+            htmlCode += '<div class="swiper-slide">';
+            htmlCode += '<div class="panel panel-primary">';
+            htmlCode += '<div class="panel-heading">';
+            htmlCode += '<span class="badge pull-right">';
+            htmlCode += d;
+            htmlCode += '</span>';
+            htmlCode += '<h2 class="panel-title">';
+            htmlCode += e;
+            htmlCode += '</h2>';
+            htmlCode += '</div>';            
+            htmlCode += '<div class="panel-body">';
+            htmlCode += '<p>';
+            htmlCode += f;
+            htmlCode += '</p>';
+            htmlCode += '<p>';
+            htmlCode += g;
+            htmlCode += '</p>';
+            htmlCode += '<ul class="list-group">';
+            htmlCode += '<li class="list-group-item"><span class="label label-primary">';
+            htmlCode += h;
+            htmlCode += '</span>';
+            htmlCode += '<span class="badge">';
+            htmlCode += i;
+            htmlCode += '</span></li>';
+            htmlCode += '<li class="list-group-item"><span class="label label-warning">';
+            htmlCode += j;
+            htmlCode += '</span>';
+            htmlCode += '<span class="badge">';
+            htmlCode += k;
+            htmlCode += '</span></li></ul>';
+            htmlCode += '<div class="row panFooter">';
+            htmlCode += '<a href="#" class="btn btn-lg btn-primary">';
+            htmlCode += z;
+            htmlCode += '</a>';
+            htmlCode += '</div>';
+            htmlCode += '</div>';
+            htmlCode += '</div>';
+            htmlCode += '</div>';
+
+            return htmlCode;
+        }
+        
+        function getSites() {
+//            var htmlCode = getSiteData();
+            var htmlCode = getSiteHTML();
+            var area = _('siteList');
+            area.innerHTML = htmlCode;
+        }
+        
+        function firstRun() {
+            getSites();
+            prepForm();
+        }
+        
+    </script>
+</head>
+<!--<body onload="hideAllandShowFAQ();">-->
+<!--<body onload="firstRun();">-->
+<body>
+    
+<div id="frame" class="container col-md-12 col-lg-12">
+    <div class="swiper-container">
+        <div id="siteList" class="swiper-wrapper">
+        </div>
+    </div>
+</div>
+    
+<div class="container col-md-12 col-lg-12 panHeader navbar-fixed-bottom">
+    <ul class="pager">
+        <li class="previous"><a href="#" class="button-prev col-md-2 col-lg-1 col-lg-offset-0">&larr; Older</a></li>
+        <li class=""><a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-warning col-md-6 col-lg-6 col-lg-offset-2">Create New Site</a></li>
+        <li class="next"><a href="#" class="button-next col-md-2 col-lg-1 col-lg-offset-0">Newer &rarr;</a></li>
+    </ul>
+</div>
+    
+    
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+<div class="modal-dialog">
+
+<!-- Modal content-->
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">Create New Site</h4>
+</div>
+<div class="modal-body" id="siteName">
+    
+<form class="form-horizontal">
+  <fieldset>
+    <div class="form-group">
+      <label for="forName" class="col-lg-2 control-label">Name</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="formIdName" placeholder="Name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="forLocation" class="col-lg-2 control-label">Location</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="formIdLocation" placeholder="Location">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="forDate" class="col-lg-2 control-label">Date</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="formIdDate" placeholder="Date">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="forTime" class="col-lg-2 control-label">Time</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="formIdTime" placeholder="Time">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="textareaNotes" class="col-lg-2 control-label">Notes</label>
+      <div class="col-lg-10">
+        <textarea class="form-control" rows="3" id="textareaNotes" rows="5" cols="20" ></textarea>
+<!--        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary" data-dismiss="modal">Create New Site</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+    
+</div>
+</div>
+</div>
+</div>
+    
+<!--
+<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+<p class=" pull-right"><a id="NewProject" class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#myModal" role="button">Create New Site</a></p>
+<p class=" pull-left"><a id="BackButton" class="btn btn-default btn-lg" href="#" onclick="backAway(); return false;" role="button">Go Back</a></p>
+<p class=" pull-right"><a id="NewProject" class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#myModal" role="button">Create New Site</a></p>
+-->
+    
+    
+<!-- Link jQuery -->
+<script src="js/jquery-2.2.4.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Link jQuery -->
+<script src="js/jquery-2.2.4.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="js/bootstrap.min.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        
+        function prepForm() {
+            setDate();
+            setTime();
+        }
+        
+        function setDate() {
+            var date = new Date();
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            
+            if (month < 10) month = "0" + month;
+            if (day < 10) day = "0" + day;
+            
+            var today = year + "-" + month + "-" + day;
+            
+            var d = _("formIdDate");
+            d.value = today;
+        }
+        
+        function setTime() {
+            var date = new Date();
+            var hour = date.getHours();
+            var minutes = date.getMinutes();
+            
+            if (minutes < 10) minutes = "0" + minutes;
+            if (hour < 10) hour = "0" + hour;
+            
+            var timeNow = hour + ":" + minutes;
+            
+            var t = _("formIdTime");
+            t.value = timeNow;
+        }
+        
+    $(document).ready(function () {
+        firstRun();
+        
+        var swiper = new Swiper('.swiper-container', {
+            nextButton: '.button-next',
+            prevButton: '.button-prev',
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+//            slidesPerView: 'auto',
+            slidesPerView: 3,
+            coverflow: {
+                rotate: 50,
+                stretch: 0,
+                depth: 50,
+                modifier: 1
+//                slideShadows : true
+            }
+        })
+    });
+        
+        /* windowDimensions */
+        function windowDimensions() { // prototype/jQuery compatible
+            var myWidth = 0, myHeight = 0;
+            if( typeof( window.innerWidth ) == 'number' ) {
+                    //Non-IE or IE 9+ non-quirks
+                    myWidth = window.innerWidth;
+                    myHeight = window.innerHeight;
+                } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                    //IE 6+ in 'standards compliant mode'
+                    myWidth = document.documentElement.clientWidth;
+                    myHeight = document.documentElement.clientHeight;
+                } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                //IE 5- (lol) compatible
+                myWidth = document.body.clientWidth;
+                myHeight = document.body.clientHeight;
+            }
+            
+            if (myWidth < 1) myWidth = screen.width; // emergency fallback to prevent division by zero
+            if (myHeight < 1) myHeight = screen.height; 
+            return [myWidth,myHeight];
+        }
+        
+        var dim = windowDimensions();
+//        myIframe = $('#frameI');
+        myIframe = $('#frame');
+        myIframe.height((dim[1]) + "px");
+        /* end windowDimensions */
+        
+</script>
+
+
+</body>
+</html>

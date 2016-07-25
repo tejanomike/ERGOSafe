@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ERGO Analysis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="css/swiper.min.css">
+    
+    <!-- Link Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- Link Bootstrap CSS -->
+    <link rel="stylesheet" href="css/darkly.min.css">
+    
+    <link rel="stylesheet" href="css/nouislider.min.css" rel="stylesheet">
+    <script src="js/nouislider.min.js"></script>
+
+    <!-- Demo styles -->
+    <style>
+    html, body {
+/*        position: relative;*/
+        height: 100%;
+        width: 100%;
+    }
+    body {
+//        background: #eee;
+        background: #000;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+//        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+        
+    .swiper-container, .swiper-container-existing, .non-swiper-container, .swiperVideoPanelHort, .swiperVideoPanelVert {
+/*
+        margin: 20px auto;
+        width: 300px;
+        height: 300px;
+        left: 50%;
+        top: 50%;
+        margin-left: -150px;
+        margin-top: -150px;
+*/
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+        
+    .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        
+        text-align: center;
+        font-size: 18px;
+        background: #000;
+        
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+        
+        .swiper-slide2 {
+            
+        }
+        
+    .FAQ {
+        text-align: left;
+        margin-left: .5em;
+        margin-right: .5em;
+/*
+        margin-top: -2em;
+
+        padding-left: 2em;
+        padding-right: 2em;
+        margin-left: -2em;
+        margin-right: -2em;
+*/
+    }
+        
+    .formNewSite {
+        margin-top: -1em;
+        text-align: left;
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+        
+    .vertical-center {
+        display: inline-block;
+        vertical-align: middle !important;
+        float: none;            
+    }
+        
+    .vertical-top {
+        display: inline-block;
+        vertical-align: top !important;
+        float: none;
+    }
+        
+    .vertical-bottom {
+        display: inline-block;
+        vertical-align: bottom !important;
+        float: none;            
+    }
+        
+    .v-divider {
+         margin-left: 5px;
+         margin-right: 5px;
+         width: 2px;
+         height: 100%;
+         border-left: 1px solid white;
+    }
+        
+    .wow {
+        background-color: crimson;
+    }
+        
+    .VideoSelect .tableColor {
+        color: burlywood;
+    }
+        
+    .VideoSelect > thead > th {
+        text-align: center;
+    }
+        
+    .Describe {
+        text-align: left;
+    }
+
+/*
+        
+    .FAQ > img {
+        align-content: center;
+    }   
+*/
+    </style>
+    
+    <script type="text/javascript">
+    
+        function _i3(x) {
+            return _(x).innerHTML;
+        }
+
+        function _n3(x) {
+            return document.getElementsByName(x);
+        }
+
+        function _3(x) {
+            return document.getElementById(x);
+        }
+        
+        function showv_ele3(show) {
+            _(show).style.visibility="visible";
+        }
+
+        function hidev_ele3(hide) {
+            _(hide).style.visibility="hidden";
+        }
+        
+        function show_ele3(show) {
+            _(show).style.display="block";
+        }
+
+        function hide_ele3(hide) {
+            _(hide).style.display="none";
+        }
+    
+        function resetSections3() {
+            hide_ele("OpenNew");
+//            hide_ele("ResultAnimation_14");
+        }
+        
+        function hideAll3() {
+//            hide_ele("OpenNew");
+            hide_ele("OpenExisting");
+            hide_ele("OpenReview");
+            hide_ele("OpenReports");
+            hide_ele("OpenFAQ");
+            
+            /* Individual slides */
+//            hide_ele("newResponse");
+            return true;
+        }
+        
+        function hideAllandShowFAQ3() {
+            hideAll();
+            show_ele("OpenFAQ");
+            prepForm();
+            return true;
+        }
+        
+        function runOpenSite(x) {
+//            hideAll();
+//            show_ele("OpenExisting");
+            swiper.slideTo(x,300,false);            
+        }
+        
+        function runOpenExistingSite3() {
+            
+        }
+        
+        function runOpenNewJob3() {
+            hideAll();
+            show_ele("OpenExisting");
+            swiperNew.slideTo(1,300,false);
+            
+            
+//            var output = $('.swiper-wrapper-new');
+//            var landmark = '<div class="swiper-slide">Response</div>';
+//            output.append(landmark);
+//            var swiper = _("swiper-container-new");
+//            swiper.slideNext(false, 300);
+            
+//            var output = $('.swiper-wrapper-new');
+//            var output = $('.swiper-wrapper-new');
+//            var landmark = '<div class="swiper-slide">Response</div>';
+//            var slide = output.append(landmark);
+//            var swiper = SwiperNew;
+//            slide.swipeNext();
+//            swiper.swipeNext();
+            
+//            show_ele("newResponse");
+//            var swiper = SwiperNew;
+//            swiper.swipeNext();
+            
+        }
+        
+        function runOpenExisting3() {
+            hideAll();
+            show_ele("OpenExisting");
+        }
+        
+        function runOpenReview3() {
+            hideAll();
+            show_ele("OpenReview");
+        }
+        
+        function runOpenReports3() {
+            hideAll();
+            show_ele("OpenReports");
+        }
+        
+        
+    </script>
+</head>
+<!--<body onload="hideAllandShowFAQ();">-->
+<body>
+    
+<!--    <div class="container-fluid">-->
+    
+    <div id="OpenVideo" class="swiper-container">
+        <div class="swiper-wrapper">
+    
+            <div class="swiper-slide">
+                <div class="row">
+                    <div class="row col-lg-12 col-md-12">
+                        <div class="container">
+
+                        
+                        <div class="col-lg-6 col-md-6">
+                            <div class="row col-lg-12 col-md-12">
+                                <h2>Shoot Video</h2>                        
+                            </div>
+                            <div class="row col-lg-12 col-md-12">
+                                <a id="NewVideo" href="#" data-toggle="modal" data-target="#myModalVideo" role="button"><img alt="Sample Video" src="images/VideoSample.png" class="img-responsive" /></a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6 col-md-6">
+                            <div class="row col-lg-12 col-md-12">
+                                <h2>Select Video</h2>                        
+                            </div>
+                            <div class="row col-lg-12 col-md-12 tableColor">
+                                <div class="form-group">
+                                    <a href="#" onclick="runOpenSite(1); return false;">
+                                    <table class="table table-hover table-responsive table-striped" id="VideoSelect">
+<!--                                    <table class="table table-hover table-responsive table-striped" onclick="runOpenSite(3); return false;" role="button" id="VideoSelect">-->
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Length</th>
+                                                <th>Date Shot</th>                                            
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td>video_sample0001.mp4</td><td>00:30</td><td>April 11, 2016</td></tr>
+                                            <tr><td>video_sample0002.mp4</td><td>01:22</td><td>April 18, 2016</td></tr>
+                                            <tr><td>video_sample0003.mp4</td><td>03:45</td><td>April 18, 2016</td></tr>
+                                            <tr><td>video_sample0004.mp4</td><td>15:26</td><td>April 18, 2016</td></tr>
+                                            <tr><td>video_sample0005.mp4</td><td>01:15</td><td>April 18, 2016</td></tr>
+                                            <tr><td>video_sample0006.mp4</td><td>02:50</td><td>May 23, 2016</td></tr>
+                                            <tr><td>video_sample0007.mp4</td><td>10:52</td><td>May 23, 2016</td></tr>
+                                            <tr><td>video_sample0008.mp4</td><td>03:33</td><td>June 10, 2016</td></tr>
+                                            <tr><td>video_sample0009.mp4</td><td>05:32</td><td>June 10, 2016</td></tr>
+                                            <tr><td>video_sample0010.mp4</td><td>01:37</td><td>June 10, 2016</td></tr>
+                                            <tr><td>video_sample0011.mp4</td><td>00:55</td><td>June 10, 2016</td></tr>
+                                        </tbody>
+                                    </table>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="row">
+                    <div class="row col-lg-12 col-md-12">
+                        <div class="row">
+                            <div class="row col-lg-12 col-md-12">
+                                <h2>Edit Video (Markers)</h2>
+                            </div>                        
+                        </div>
+                        
+                        <div class="row">
+                            <div class="container">
+                            <div class="col-lg-6 col-md-6">
+
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="row col-md-10 col-lg-10 col-lg-offset-1 col-md-offset-1">
+                                        <div class="row">
+                                            <img alt="Edit Sample Video" src="images/VideoSampleWithMarkers.png" class="img-responsive" />                                        
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <div id="softswitch"></div>                                                
+                                                </div>
+                                                <div class="panel-body">
+                                                    <h4>Set the 'In' and 'Out' Markers above</h4>                                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <div class="row col-lg-12 col-md-12 Describe">
+                                    <h3>Set the 'In' and 'Out' Markers</h3>
+                                </div>
+                                <div class="row col-lg-12 col-md-12 Describe">
+                                    <p>Drag the left marker to the 'In' position or where you would like the video to start playing. Drag the right marker to the 'Out' position or where you would like the video to stop playing.</p>
+                                    <p>Set the 'In' and 'Out' markers on the video for the selected video and then click the 'Edit Video' button.</p>
+                                </div>
+                            </div>
+
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <a class="btn btn-primary btn-lg col-lg-2 col-md-2 col-md-offset-9 col-lg-offset-9" href="#" onclick="runOpenSite(2); return false;" role="button">Edit Video</a>
+                            </div>
+                        </div>
+                
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="row">
+                    <div class="row col-lg-12 col-md-12">
+                        <div class="row">
+                            <div class="row col-lg-12 col-md-12">
+                                <h2>Edit Video (Tasks)</h2>
+                            </div>                        
+                        </div>
+                        
+                        <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="row col-md-10 col-lg-10 col-lg-offset-1 col-md-offset-1">
+                                        <div class="row">
+                                            <img alt="Edit Sample Video" src="images/VideoSampleWithMarkers.png" class="img-responsive" />                                        
+                                        </div>
+                                        
+                                        <div class="row text-left">
+                                            <div class="container">
+                                            <div class="form-group">
+                                                <form>
+                                                <label for="increment">Time Increment</label>
+                                                <select name="increment" id="increment">
+                                                <option value=".25" >.25
+                                                <option selected value=".5" >.5
+                                                <option value=".75" >.75
+                                                <option value="1" >1
+                                                <option value="1.25" >1.25
+                                                <option value="1.5" >1.5
+                                                <option value="1.75" >1.75
+                                                <option value="2" >2
+                                                </select>
+                                            </div>
+                                                
+                                            <div class="form-group">
+                                                <label for="videoLength">Video Length in seconds</label>
+                                                <input type=text name="videoLength" id="videoLength" value="3">
+                                                <br />
+                                                <input type="button" id="addMoreRows" value="Create fields" onclick="addRows()" /><input type="reset">
+                                                </form>
+                                            </div>
+                                        </div>
+                                        
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 wow">
+                                <table id="tt" border="1" >
+                                    <thead>
+                                    <tr>
+                                    <th><span class="maintitle">Task</span></th>
+                                    <th colspan=7 align=left><span class="maintitle">Pallet lift</span></th>
+                                    </tr>
+
+                                    <tr>
+                                    <th colspan=2></th>
+                                    <th colspan=6><span class="subtitle">Input</span></th>
+                                    </tr>
+
+                                    <tr>
+                                    <th colspan=2></th>
+                                    <th colspan=4><span class="subtitle">Shoulder</span></th>
+                                    <th colspan=2><span class="subtitle">Back</span></th>
+                                    </tr>
+
+                                    <tr>
+                                    <th colspan=1>Video Time Code</th>
+                                    <th colspan=1>Step of Task</th>
+                                    <th colspan=1>Load<br /><span class="short">lbs</span></th>
+                                    <th colspan=1>HS<br /><span class="short">in.</span></th>
+                                    <th colspan=1>Vert<br /><span class="short">factor</span></th>
+                                    <th colspan=1>Latri<br /><span class="short">factor</span></th>
+                                    <th colspan=1>Load<br /><span class="short">lbs</span></th>
+                                    <th colspan=1>Bend<br /><span class="short">fraction</span></th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <form name="vform" id="vform">
+                                    <div id="dynamicInput"></div>
+                                    </tbody>
+                                </table>
+
+                                <div id="formValues"></div>
+
+                            </div>
+
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+<!--                                <a class="btn btn-primary btn-lg col-lg-2 col-md-2 col-md-offset-9 col-lg-offset-9" href="#" onclick="runOpenSite(4); return false;" role="button">Save Video Task</a>-->
+                                <a class="btn btn-primary btn-lg col-lg-2 col-md-2 col-md-offset-9 col-lg-offset-9" href="#" onclick="runOpenSite(0); return false;" role="button">Save Video Task</a>
+                            </div>
+                        </div>
+                
+                    </div>
+                    
+                </div>
+            </div>
+            
+            
+            <div class="swiper-slide">
+                <div class="row">
+                    <div class="row col-lg-12 col-md-12">
+                        <div class="col-sm-3 col-md-3 col-lg-3">
+                            <img alt="Edit Sample Video" src="images/VideoSampleWithMarkers.png" class="img-responsive" />                            
+                        </div>
+                        <div class="col-sm-9 col-md-9 col-lg-9">
+                            <div id="VideoEditPanel" class="swiper-panel-vert wow">
+                                <div class="swiper-wrapper">
+
+                                    <div class="swiper-slide2">
+                                        <div class="row content">
+                                            Vert Tab 1
+                                        </div>
+                                        <div class="swiper-button-next"></div>
+                                    </div>
+
+                                    <div class="swiper-slide2">
+                                        <div class="row content">
+                                            Vert Tab 2
+                                        </div>
+                                        <div class="swiper-button-next"></div>
+                                    </div>
+
+                                    <div class="swiper-slide2">
+                                        <div class="row content">
+                                            Vert Tab 3
+                                        </div>
+                                        <div class="swiper-button-next"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-lg-12 col-md-12">
+                        <div id="VideoEditControls" class="swiper-panel-hort wow">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide2">
+                                    <div class="row content">
+                                        Hort Tab 1
+                                    </div>
+                                    <div class="swiper-button-next"></div>
+                                </div>
+
+                                <div class="swiper-slide2">
+                                    <div class="row content">
+                                        Hort Tab 2
+                                    </div>
+                                    <div class="swiper-button-next"></div>
+                                </div>
+
+                                <div class="swiper-slide2">
+                                    <div class="row content">
+                                        Hort Tab 3
+                                    </div>
+                                    <div class="swiper-button-next"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <!-- Modals -->
+    <!-- Modal -->
+    <div id="myModalVideo" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Shoot Video Now</h4>
+          </div>
+          <div class="modal-body" id="siteName">
+            <p>When you have completed shooting video, click 'Return Video' to continue.</p>
+            <img alt="Video Frame" src="images/ERGOAnalysisVideoFrame201607211100.png" class="img-responsive" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Return Video</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+    
+<!-- Swiper FAQ -->
+    
+    <!-- Link jQuery -->
+    <script src="js/jquery-2.2.4.min.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="js/swiper.min.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+    
+    <!-- Initialize Swiper -->
+    <script>
+        
+        function _(x) {
+            return document.getElementById(x);
+        }
+        
+        function _(x) {
+            return document.getElementById(x);
+        }
+        
+        function show_ele(show) {
+            _(show).style.display="block";
+        }
+        
+        var swiper = new Swiper('.swiper-container', {
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            spaceBetween: 50,
+            effect: 'slide',
+            grabCursor: true
+        });
+        
+//        $(function() {
+//            $("button").click(function(e) {
+//                e.preventDefault();
+//                parent.window.change_iframe1_src(this.rel);
+//            })
+//        })
+        
+        var swiperVideoPanelHort = new Swiper('.swiper-panel-hort', {
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            spaceBetween: 20,
+            effect: 'slide',
+            nested: true,
+            grabCursor: true
+        })
+        
+        var swiperVideoPanelVert = new Swiper('.swiper-panel-vert', {
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            spaceBetween: 20,
+            effect: 'slide',
+            nested: true,
+            grabCursor: true
+        })
+        
+        swiperVideoPanelHort.params.control = swiperVideoPanelVert;
+        swiperVideoPanelVert.params.control = swiperVideoPanelHort;
+        
+        var markersDragSlider = document.getElementById('softswitch');
+
+        noUiSlider.create(markersDragSlider, {
+            start: [ 0, 100 ],
+            behaviour: 'drag',
+            connect: true,
+            range: {
+                'min':  0,
+                'max':  100
+            },
+            pips: { // Show a scale with the slider
+                mode: 'steps',
+                density: 2
+            }
+        });
+        
+//        var swiperNew = new Swiper('.swiper-container-existing', {
+//            nextButton: '.swiper-button-next',
+//            prevButton: '.swiper-button-prev',
+//            spaceBetween: 50,
+//            effect: 'slide',
+//            grabCursor: true
+//        });
+//        
+//        var swiperVideoPanelHort = new Swiper('.swiper-panel-hort', {
+//            nextButton: '.swiper-button-next',
+//            prevButton: '.swiper-button-prev',
+//            spaceBetween: 20,
+//            effect: 'slide',
+//            nested: true,
+//            grabCursor: true
+//        })
+//        
+//        var swiperVideoPanelVert = new Swiper('.swiper-panel-vert', {
+//            nextButton: '.swiper-button-next',
+//            prevButton: '.swiper-button-prev',
+//            spaceBetween: 20,
+//            effect: 'slide',
+//            nested: true,
+//            grabCursor: true
+//        })
+//        
+//        swiperVideoPanelHort.params.control = swiperVideoPanelVert;
+//        swiperVideoPanelVert.params.control = swiperVideoPanelHort;
+//        
+//        var markersDragSlider = document.getElementById('softswitch');
+//
+//        noUiSlider.create(markersDragSlider, {
+//            start: [ 0, 100 ],
+//            behaviour: 'drag',
+//            connect: true,
+//            range: {
+//                'min':  0,
+//                'max':  100
+//            },
+//            pips: { // Show a scale with the slider
+//                mode: 'steps',
+//                density: 2
+//            }
+//        });
+        
+        /* New Site Form */
+        function prepForm3() {
+            setDate();
+            setTime();
+        }
+        
+        function _3(x) {
+            return document.getElementById(x);
+        }
+        
+        function backAway3() {
+            if(history.length === 1) {
+                window.location = "index.html"
+            } else {
+                history.back();
+            }
+        }
+        
+        function setDate3() {
+            var date = new Date();
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            
+            if (month < 10) month = "0" + month;
+            if (day < 10) day = "0" + day;
+            
+            var today = year + "-" + month + "-" + day;
+            
+            var d = _("formIdDate");
+            d.value = today;
+        }
+        
+        function setTime3() {
+            var date = new Date();
+            var hour = date.getHours();
+            var minutes = date.getMinutes();
+            
+            if (minutes < 10) minutes = "0" + minutes;
+            if (hour < 10) hour = "0" + hour;
+            
+            var timeNow = hour + ":" + minutes;
+            
+            var t = _("formIdTime");
+            t.value = timeNow;
+        }
+        
+        function setModelSiteName3() {
+            var n = _("formIdName").value;
+            _("siteName").innerHTML = "<p>" + n + " has been created.</p>";
+        }
+        
+        /* New Site Form End */
+        
+        
+        
+        
+        function addEndOfLine3()
+        {
+            var eol = '';
+            eol+='<td align=right colspan=7><input type="submit" onclick="countFields();" /></td>';
+            eol+='<td align=right colspan=1><input type="reset" /></td>';
+            eol+='</tr></form></tbody>';
+            _("tt").insertRow(-1).innerHTML = eol;
+        }
+        
+        function addLine3(count)
+        {
+            var c = count.toString();
+            var index = c.indexOf(".");
+
+            if ((index == -1) && (c.length = 1))
+            {
+                dcount = c.concat(".0");
+            }
+            else
+                dcount = c;
+
+            field = '<tr><td align=middle><span class="data">'+dcount+'</span></td>';
+            field+='<td align=left><input type="text" size=5 name="step[]" /></td>';
+            field+='<td align=right><input type="text" size=5 name="shoulder_load[]" /></td>';
+            field+='<td align=right><input type="text" size=5 name="shoulder_hs[]" /></td>';
+            field+='<td align=right><input type="text" size=5 name="shoulder_vert[]" /></td>';
+            field+='<td align=right><input type="text" size=5 name="shoulder_latri[]" /></td>';
+            field+='<td align=right><input type="text" size=5 name="back_load[]" /></td>';
+            field+='<td align=right><input type="text" size=5 name="back_bend[]" /></td></tr>';
+            _("tt").insertRow(-1).innerHTML = field;
+        }
+
+        function addRows3()
+        {
+            var n = _("increment");
+            var inc = parseFloat(n.options[n.selectedIndex].value);
+            var sec = _("videoLength").value;
+            var i = 0;
+            do
+            {
+                addLine(i);
+                i = (inc * 10 + i * 10) / 10;
+            } while (i < sec);
+            addLine(i);
+            addEndOfLine();
+        }
+
+        function countFields3()
+        {
+            var str = '';
+            var elem1 = _n('step[]');
+            var elem2 = _n('shoulder_load[]');
+            var elem3 = _n('shoulder_hs[]');
+            var elem4 = _n('shoulder_vert[]');
+            var elem5 = _n('shoulder_latri[]');
+            var elem6 = _n('back_load[]');
+            var elem7 = _n('back_bend[]');
+
+            for (var i=0;i<elem1.length;i++)
+            {
+                str += elem1[i].value + "|" + elem2[i].value + "|" + elem3[i].value + "|" + elem4[i].value + "|" + elem5[i].value + "|" + elem6[i].value + "|" + elem7[i].value;
+                str += "<br />";
+            }
+            document.getElementById('formValues').innerHTML = str;
+        }
+
+//    var swiperV = new Swiper('.swiper-container-v', {
+//        pagination: '.swiper-pagination-v',
+//        paginationClickable: true,
+//        direction: 'vertical',
+//        spaceBetween: 50
+//    });
+//    var swiperH = new Swiper('.swiper-container-h', {
+//        pagination: '.swiper-pagination-h',
+//        paginationClickable: true,
+//        nextButton: '.swiper-button-next',
+//        spaceBetween: 50,
+//        effect: 'cube',
+//        grabCursor: true,
+//        cube: {
+//            shadow: false,
+//            slideShadows: false
+//        }
+//    });
+    </script>
+</body>
+</html>
