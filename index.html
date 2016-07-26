@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ERGO Analysis</title>
+    <title>ERGO Analysis (Home Page)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-
+    
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="css/swiper.min.css">
     
@@ -14,268 +14,414 @@
     <!-- Link Bootstrap CSS -->
     <link rel="stylesheet" href="css/darkly.min.css">
     
-    <link rel="stylesheet" href="css/nouislider.min.css" rel="stylesheet">
-    <script src="js/nouislider.min.js"></script>
-
-    <!-- Demo styles -->
+    <!-- Javascript -->
+    <!-- bottom Navigation -->
+    <script src="js/myNav.js"></script>
+    
     <style>
-    html, body {
-        position: relative;
-        height: 100%;
-    }
-    body {
-//        background: #eee;
-        background: #000;
-        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-        font-size: 14px;
-//        color:#000;
-        margin: 0;
-        padding: 0;
-    }
-        
-    .swiper-container, .swiper-container-existing, .non-swiper-container, .swiperVideoPanelHort, .swiperVideoPanelVert {
-/*
-        margin: 20px auto;
-        width: 300px;
-        height: 300px;
-        left: 50%;
-        top: 50%;
-        margin-left: -150px;
-        margin-top: -150px;
-*/
-        width: 100%;
-        height: 100%;
-        position: absolute;
-    }
-        
-    .swiper-slide {
-        background-position: center;
-        background-size: cover;
-        
-        text-align: center;
-        font-size: 18px;
-        background: #000;
-        
-        /* Center slide text vertically */
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-    }
-        
-        .swiper-slide2 {
-            
-        }
-        
-    .FAQ {
-        text-align: left;
-/*
-        margin-top: -2em;
-
-        padding-left: 2em;
-        padding-right: 2em;
-        margin-left: -2em;
-        margin-right: -2em;
-*/
-    }
-        
-    .formNewSite {
-        margin-top: -1em;
-        text-align: left;
-        padding-left: 2em;
-        padding-right: 2em;
-    }
-        
-    .vertical-center {
-        display: inline-block;
-        vertical-align: middle !important;
-        float: none;            
-    }
-        
-    .vertical-top {
-        display: inline-block;
-        vertical-align: top !important;
-        float: none;
-    }
-        
-    .vertical-bottom {
-        display: inline-block;
-        vertical-align: bottom !important;
-        float: none;            
-    }
-        
-    .v-divider {
-         margin-left: 5px;
-         margin-right: 5px;
-         width: 2px;
-         height: 100%;
-         border-left: 1px solid white;
-    }
-        
-    .wow {
-        background-color: crimson;
-    }
-        
-    .VideoSelect .tableColor {
-        color: burlywood;
-    }
-        
-    .VideoSelect > thead > th {
-        text-align: center;
-    }
-        
-    .Describe {
-        text-align: left;
-    }
-
-        .frameI {
-            height: 10%;
+        html, body {
+            position: relative;
+            background: #000;
+            margin: 0;
+            padding: 0;
+            height: 100%;
             width: 100%;
-            border:none;
+        }
+     
+        .swiper-container {
+            width: 100%;
+            height: 100%;
             position: absolute;
         }
         
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            text-align: center;
+            font-size: 18px;
+            background: #000;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+        
+        .FAQ {
+            text-align: left;
+            margin-left: .5em;
+            margin-right: .5em;
+        }
+        
+        .wow {
+            background-color: crimson;
+        }
     </style>
-    
-    <script type="text/javascript">
-
-        function _(x) {
-            return document.getElementById(x);
-        }
-        
-        function setInitialFrame() {
-            setIframe('welcome.html');            
-        }
-        
-        function setIframe(loc) {
-            _('frameI').src = loc;
-            return true;
-        }
-
-    </script>
 </head>
-<body onload="setInitialFrame();">
     
-<!--    <div class="container-fluid">-->
+<body onload="writeNav(0);">
     
-<nav class="navbar navbar-default navbar-fixed-bottom bg-primary" id="mainnavbar">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#" onclick="setInitialFrame();"><img alt="ERGOAnalysis Small Logo" src="images/ERGOAnalysisLogo0717.png" width="64" height="24"></a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="default"><a href="#" onclick="setIframe('sites.html')">Sites</a></li>
-        <li class="default"><a href="#" onclick="setIframe('jobs.html')">Jobs</a></li>
-<!--
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sites <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#" onclick="setIframe('siteNew.html')">New Site</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#" onclick="setIframe('sites.html')">Existing Site</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jobs <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#" onclick="setIframe('jobNew.html')">New Job</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#" onclick="runOpenSite(1); return false;">Existing Job</a></li>
-          </ul>
-        </li>
--->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assets <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#" onclick="setIframe('videos.html'); return false;">Videos</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#" onclick="setIframe('pictures.html'); return false;">Pictures</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#" onclick="runOpenReview(); return false;">Site Review</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#" onclick="runOpenReports(); return false;">Site Reports</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+    <div id="myNav" class="navbar navbar-default navbar-fixed-bottom"></div>
+    
+    <!-- Swiper FAQ -->
+    <div id="OpenFAQ" class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="row">
+                    <div class="row">
+                        <img src="images/ERGOAnalysisLogo0715.png" class="img-responsive">
+                    </div>
+                    <div class="row">
+                        <h2>Welcome . . . Slide to the left to start.</h2>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="col-md-1">
+                <div class="swiper-button-prev"></div>
+                </div>
+                <div class="jumbotron col-md-10">
+                    <div class="FAQ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/ERGOAnalysisLogo0715.png" height="100px" width="260px" class="img-responsive" />
+                            </div>
+                            <div class="col-md-10">
+                              <h2>Create New Site</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/menuSites0720.png" class="img-responsive" >
+                            </div>
+                            <div class="col-md-10">
+                                <h3 class="vertical-top">Sites</h3>
+                                <p>Use this option to open an existing site or create a new one.</p>
+                                <p>When creating a new site, the following information will be required: Site name, location, date, time, notes, etc.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row pull-right">
+                        <div class="col-md-3 col-lg-3">
+                          <a class="btn btn-primary btn-lg" href="#" onclick="setIframe('sites.html'); return false;" role="button">Create New Site</a>
+<!--                          <a class="btn btn-primary btn-lg" href="sites.html" target="frameI" role="button">Create New Site</a>-->
+<!--                          <a class="btn btn-primary btn-lg" href="sites.html" target="_self" role="button">Create New Site</a>-->
+                        </div>
+                    </div>
+                    </div>                        
+                </div>
+                <div class="col-md-1">
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="col-md-1">
+                <div class="swiper-button-prev"></div>
+                </div>
+                <div class="jumbotron col-md-10">
+                    <div class="FAQ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/ERGOAnalysisLogo0715.png" height="100px" width="260px" class="img-responsive" />
+                            </div>
+                            <div class="col-md-10">
+                              <h2>Jobs</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/menuJobs0720.png" class="img-responsive" >
+                            </div>
+                            <div class="col-md-10">
+                              <h3>Jobs</h3>
+                              <p>View existing jobs or create a new job.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row pull-right">
+                        <div class="col-md-3 col-lg-3">
+<!--                          <a class="btn btn-primary btn-lg" href="#" onclick="setIframe('jobs.html'); return false;" role="button">Create New Job</a>-->
+<!--                          <a class="btn btn-primary btn-lg" href="jobs.html" target="_parent" role="button">Create New Job</a>-->
+<!--                          <a href="/jobs.html" target="#frameI">Create New Job</a>-->
+                          <a class="btn btn-primary btn-lg" href="jobs.html" target="" role="button">Create New Job</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="col-md-1">
+                <div class="swiper-button-prev"></div>
+                </div>
+                <div class="jumbotron col-md-10">
+                    <div class="FAQ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/ERGOAnalysisLogo0715.png" height="100px" width="260px" class="img-responsive" />
+                            </div>
+                            <div class="col-md-10">
+                              <h2>Assets - Videos</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/menuAssetsVideos0720.png" class="img-responsive" >
+                            </div>
+                            <div class="col-md-10">
+                              <h3>Videos</h3>
+                              <p>Shoot, open, edit, or add videos in this section.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row pull-right">
+                        <div class="col-md-3 col-lg-3">
+<!--                          <a class="btn btn-primary btn-lg" href="#" onclick="setIframe('videos.html'); return false;" role="button">Open Video Assets</a>-->
+                          <a class="btn btn-primary btn-lg" href="videos.html" role="button">Open Video Assets</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="col-md-1">
+                <div class="swiper-button-prev"></div>
+                </div>
+                <div class="jumbotron col-md-10">
+                    <div class="FAQ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/ERGOAnalysisLogo0715.png" height="100px" width="260px" class="img-responsive" />
+                            </div>
+                            <div class="col-md-10">
+                              <h2>Assets - Pictures</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/menuAssetsPictures0720.png" class="img-responsive" >
+                            </div>
+                            <div class="col-md-10">
+                              <h3>Pictures</h3>
+                              <p>Shoot, open, edit, or add pictures in this section.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row pull-right">
+                        <div class="col-md-3 col-lg-3">
+<!--                          <a class="btn btn-primary btn-lg" href="#" onclick="setIframe('pictures.html'); return false;" role="button">Open Picture Assets</a>-->
+                          <a class="btn btn-primary btn-lg" href="pictures.html" role="button">Open Picture Assets</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="col-md-1">
+                <div class="swiper-button-prev"></div>
+                </div>
+                <div class="jumbotron col-md-10">
+                    <div class="FAQ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/ERGOAnalysisLogo0715.png" height="100px" width="260px" class="img-responsive" />
+                            </div>
+                            <div class="col-md-10">
+                              <h2>Review</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/menuSiteReview0720.png" class="img-responsive" >
+                            </div>
+                            <div class="col-md-10">
+                              <h3>Review</h3>
+                              <p>Use this option to open and review an existing Site.</p>
+                              <p>Demonstrations can be setup here.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row pull-right">
+                        <div class="col-md-3 col-lg-3">
+<!--                          <a class="btn btn-primary btn-lg" href="#" onclick="setIframe('review.html'); return false;" role="button">Open Review</a>-->
+                          <a class="btn btn-primary btn-lg" href="review.html" role="button">Open Review</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="col-md-1">
+                <div class="swiper-button-prev"></div>
+                </div>
+                <div class="jumbotron col-md-10">
+                    <div class="FAQ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/ERGOAnalysisLogo0715.png" height="100px" width="260px" class="img-responsive" />
+                            </div>
+                            <div class="col-md-10">
+                              <h2>Reports</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="images/menuSiteReport0720.png" class="img-responsive" >
+                            </div>
+                            <div class="col-md-10">
+                              <h3>Reports</h3>
+                              <p>Use this option to create reports for existing Site.</p>
+                              <p>Output such as screen, text documents, presentations, videos, etc.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                    </div>
+                    <div class="row pull-right">
+                        <div class="col-md-3 col-lg-3">
+<!--                          <a class="btn btn-primary btn-lg" href="#" onclick="setIframe('reports.html'); return false;" role="button">Open Reports</a>-->
+                          <a class="btn btn-primary btn-lg" href="reports.html" role="button">Open Reports</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+<!--                    <div class="swiper-button-next"></div>-->
+                </div>
+            </div>
+            
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-    
-<div id="frame">
-    <iframe src="welcome.html" id="frameI" frameborder="0" scrolling="no" style="width: 100%; border: none; position: absolute;"></iframe>
-<!--    <iframe src="welcome.html" id="frameI" frameborder="0" scrolling="no" style="width: 100%; height: 100%; border:none; position:absolute;"></iframe>-->
-</div>
+    </div>
+    <!-- Swiper FAQ -->
+    <!-- End HTML -->
     
     
+    <!-- Start Scripts -->
     <!-- Link jQuery -->
     <script src="js/jquery-2.2.4.min.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="js/swiper.min.js"></script>
     
     <!-- Bootstrap JS -->
     <script src="js/bootstrap.min.js"></script>
     
+    <script type="text/javascript">
+        var swiper = new Swiper('.swiper-container', {
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            spaceBetween: 50,
+            effect: 'cube',
+            grabCursor: true,
+            cube: {
+                shadow: false,
+                slideShadows: false
+            }
+        });
+    </script>
     
-<script>
-    
-    /* windowDimensions */
-    function windowDimensions() { // prototype/jQuery compatible
-        var myWidth = 0, myHeight = 0;
-        if( typeof( window.innerWidth ) == 'number' ) {
-            //Non-IE or IE 9+ non-quirks
-            myWidth = window.innerWidth;
-            myHeight = window.innerHeight;
-        } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
-            //IE 6+ in 'standards compliant mode'
-            myWidth = document.documentElement.clientWidth;
-            myHeight = document.documentElement.clientHeight;
-        } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
-            //IE 5- (lol) compatible
-            myWidth = document.body.clientWidth;
-            myHeight = document.body.clientHeight;
-        }
-        if (myWidth < 1) myWidth = screen.width; // emergency fallback to prevent division by zero
-        if (myHeight < 1) myHeight = screen.height; 
-        return [myWidth,myHeight];
-    }
-
-    $(document).ready(function () {
-        var dim = windowDimensions();
-        var bodHeight = dim[1];
-        var panHeight = _('mainnavbar');
-        var xHeight = panHeight.clientHeight;
-        var p = bodHeight - xHeight;
-        $("#frameI").height(p + "px");
-    });
-
-    
-</script>    
-
 </body>
 </html>
