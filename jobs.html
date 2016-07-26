@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ERGO Analysis</title>
+    <title>ERGO Analysis (Jobs)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-
+    
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="css/swiper.min.css">
     
@@ -14,510 +14,324 @@
     <!-- Link Bootstrap CSS -->
     <link rel="stylesheet" href="css/darkly.min.css">
     
-<!--
-    <link rel="stylesheet" href="css/nouislider.min.css" rel="stylesheet">
-    <script src="js/nouislider.min.js"></script>
--->
-
-    <!-- Demo styles -->
+    <!-- Javascript -->
+    <!-- bottom Navigation -->
+    <script src="js/myNav.js"></script>
+    
     <style>
-    html, body {
-/*        position: relative;*/
-        height: 100%;
-        width: 100%;
-    }
-    body {
-//        background: #eee;
-        background: #000;
-        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-        font-size: 14px;
-//        color:#000;
-        margin: 0;
-        padding: 0;
-    }
-        
-        body2{background:#fff;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:14px;color:#000;margin:0;padding:0;}
-
+        html, body {
+            position: relative;
+            background: #000;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+     
         .swiper-container {
             width: 100%;
             height: 100%;
-            padding-top: 5em;
-            padding-bottom: 0em;
-            padding-left: 0em;
-            padding-right: 0em;
+            position: absolute;
         }
         
         .swiper-slide {
-/*
             background-position: center;
-            background-size:cover;
-*/
-            width:300px;
-            height; 100%;
-/*            height:300px;*/
-        }
-        
-    .swiper-container2 {
-/*
-        margin: 20px auto;
-        width: 300px;
-        height: 300px;
-        left: 50%;
-        top: 50%;
-        margin-left: -150px;
-        margin-top: -150px;
-*/
-        width: 100%;
-        height: 100%;
-        position: absolute;
-    }
-        
-    .swiper-slide2 {
-        background-position: center;
-        background-size: cover;
-        
-        text-align: center;
-        font-size: 18px;
-        background: #000;
-        
-        /* Center slide text vertically */
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-    }
-        
-        
-    .FAQ {
-        text-align: left;
-/*
-        margin-top: -2em;
+            background-size: cover;
+            text-align: center;
+            font-size: 18px;
+            background: #000;
 
-        padding-left: 2em;
-        padding-right: 2em;
-        margin-left: -2em;
-        margin-right: -2em;
-*/
-    }
-        
-    .formNewJob {
-        margin-top: -1em;
-        text-align: left;
-        padding-left: 2em;
-        padding-right: 2em;
-    }
-        
-    .vertical-center {
-        display: inline-block;
-        vertical-align: middle !important;
-        float: none;            
-    }
-        
-    .vertical-top {
-        display: inline-block;
-        vertical-align: top !important;
-        float: none;
-    }
-        
-    .vertical-bottom {
-        display: inline-block;
-        vertical-align: bottom !important;
-        float: none;            
-    }
-        
-    .v-divider {
-         margin-left: 5px;
-         margin-right: 5px;
-         width: 2px;
-         height: 100%;
-         border-left: 1px solid white;
-    }
-        
-    .wow {
-        background-color: crimson;
-    }
-        
-    .wow2 {
-        background-color: goldenrod;
-    }
-        
-    .Describe {
-        text-align: left;
-    }
-        
-        .swipe-wrapper {
-/*
-            padding-left: 3em;
-            margin-right: 3em;
-*/
-        }
-
-        
-        .JobButton {
-/*
-            padding-left: 2em;
-            padding-right: 2em;
-*/
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
         }
         
-        .panHeader {
-            padding: -1em 0 0 1em;
-            margin-top: 1em;
+        .panel-title, .panel-body {
+            text-align: left;
         }
         
         .panFooter {
             padding-left: 1em;
         }
-/*
         
-    .FAQ > img {
-        align-content: center;
-    }   
-*/
+        #frame {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .wow {
+            background-color: crimson;
+        }
     </style>
-    
-    <script type="text/javascript">
-        function _(x) {
-            return document.getElementById(x);
-        }
-        
-        function getEncodeData() {
-            var encodeData = '';
-            encodeData = 'data:text/html;charset=utf-8,';
-            return encodeData;
-        }
-        
-        function getJobData() {
-            /* Make db call here and create table */
-        }
-        
-        function getJobHTML() {
-            var htmlCode = '';
-            
-            var d = '';
-            var e = '<h4>Jobs</h4>';
-            var f = '';
-            var g = '';
-            var h = '';
-            var i = '';
-            var j = '';
-            var k = '';
-            var z = 'Create New Job';
-            
-            htmlCode += '<div class="swiper-slide">';
-            htmlCode += '<div class="panel panel-primary">';
-            htmlCode += '<div class="panel-heading">';
-//            htmlCode += '<span class="badge pull-right">';
-//            htmlCode += d;
-//            htmlCode += '</span>';
-            htmlCode += '<h2 class="panel-title">';
-            htmlCode += e;
-            htmlCode += '</h2>';
-            htmlCode += '</div>';            
-            htmlCode += '<div class="panel-body">';
-            htmlCode += '<p>';
-            htmlCode += f;
-            htmlCode += '</p>';
-            htmlCode += '<p>';
-            htmlCode += g;
-            htmlCode += '</p>';
-//            htmlCode += '<ul class="list-group">';
-//            htmlCode += '<li class="list-group-item"><span class="label label-primary">';
-//            htmlCode += h;
-//            htmlCode += '</span>';
-//            htmlCode += '<span class="badge">';
-//            htmlCode += i;
-//            htmlCode += '</span></li>';
-//            htmlCode += '<li class="list-group-item"><span class="label label-warning">';
-//            htmlCode += j;
-//            htmlCode += '</span>';
-//            htmlCode += '<span class="badge">';
-//            htmlCode += k;
-//            htmlCode += '</span></li></ul>';
-            htmlCode += '<div class="row panFooter">';
-            htmlCode += '<a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-lg btn-primary">';
-            htmlCode += z;
-            htmlCode += '</a>';
-            htmlCode += '</div>';
-            htmlCode += '</div>';
-            htmlCode += '</div>';
-            htmlCode += '</div>';
-            
-            var d = 'July 25, 2016';
-            var e = 'Forklift Operator';
-            var f = 'Dallas City Packing Inc';
-            var g = 'Took video of the forklift driver from different angles.';
-            var h = 'Videos';
-            var i = '1';
-            var j = 'Pictures';
-            var k = '0';
-            var z = 'Open Job';
-            
-            htmlCode += '<div class="swiper-slide">';
-            htmlCode += '<div class="panel panel-primary">';
-            htmlCode += '<div class="panel-heading">';
-            htmlCode += '<span class="badge pull-right">';
-            htmlCode += d;
-            htmlCode += '</span>';
-            htmlCode += '<h2 class="panel-title">';
-            htmlCode += e;
-            htmlCode += '</h2>';
-            htmlCode += '</div>';            
-            htmlCode += '<div class="panel-body">';
-            htmlCode += '<p>';
-            htmlCode += f;
-            htmlCode += '</p>';
-            htmlCode += '<p>';
-            htmlCode += g;
-            htmlCode += '</p>';
-            htmlCode += '<ul class="list-group">';
-            htmlCode += '<li class="list-group-item"><span class="label label-primary">';
-            htmlCode += h;
-            htmlCode += '</span>';
-            htmlCode += '<span class="badge">';
-            htmlCode += i;
-            htmlCode += '</span></li>';
-            htmlCode += '<li class="list-group-item"><span class="label label-warning">';
-            htmlCode += j;
-            htmlCode += '</span>';
-            htmlCode += '<span class="badge">';
-            htmlCode += k;
-            htmlCode += '</span></li></ul>';
-            htmlCode += '<div class="row panFooter">';
-            htmlCode += '<a href="#" class="btn btn-lg btn-primary">';
-            htmlCode += z;
-            htmlCode += '</a>';
-            htmlCode += '</div>';
-            htmlCode += '</div>';
-            htmlCode += '</div>';
-            htmlCode += '</div>';
-            
-            var d = 'July 25, 2016';
-            var e = 'Meat Cutter Position #1';
-            var f = 'Dallas City Packing Inc';
-            var g = 'Was shot in a tight location.';
-            var h = 'Videos';
-            var i = '3';
-            var j = 'Pictures';
-            var k = '0';
-            var z = 'Open Job';
-            
-            htmlCode += '<div class="swiper-slide">';
-            htmlCode += '<div class="panel panel-primary">';
-            htmlCode += '<div class="panel-heading">';
-            htmlCode += '<span class="badge pull-right">';
-            htmlCode += d;
-            htmlCode += '</span>';
-            htmlCode += '<h2 class="panel-title">';
-            htmlCode += e;
-            htmlCode += '</h2>';
-            htmlCode += '</div>';            
-            htmlCode += '<div class="panel-body">';
-            htmlCode += '<p>';
-            htmlCode += f;
-            htmlCode += '</p>';
-            htmlCode += '<p>';
-            htmlCode += g;
-            htmlCode += '</p>';
-            htmlCode += '<ul class="list-group">';
-            htmlCode += '<li class="list-group-item"><span class="label label-primary">';
-            htmlCode += h;
-            htmlCode += '</span>';
-            htmlCode += '<span class="badge">';
-            htmlCode += i;
-            htmlCode += '</span></li>';
-            htmlCode += '<li class="list-group-item"><span class="label label-warning">';
-            htmlCode += j;
-            htmlCode += '</span>';
-            htmlCode += '<span class="badge">';
-            htmlCode += k;
-            htmlCode += '</span></li></ul>';
-            htmlCode += '<div class="row panFooter">';
-            htmlCode += '<a href="#" class="btn btn-lg btn-primary">';
-            htmlCode += z;
-            htmlCode += '</a>';
-            htmlCode += '</div>';
-            htmlCode += '</div>';
-            htmlCode += '</div>';
-            htmlCode += '</div>';
-            
-            var d = 'July 25, 2016';
-            var e = 'Meat Cutter Position #2';
-            var f = 'Dallas City Packing Inc';
-            var g = 'Was shot in a tight location.';
-            var h = 'Videos';
-            var i = '2';
-            var j = 'Pictures';
-            var k = '10';
-            var z = 'Open Job';
-            
-            htmlCode += '<div class="swiper-slide">';
-            htmlCode += '<div class="panel panel-primary">';
-            htmlCode += '<div class="panel-heading">';
-            htmlCode += '<span class="badge pull-right">';
-            htmlCode += d;
-            htmlCode += '</span>';
-            htmlCode += '<h2 class="panel-title">';
-            htmlCode += e;
-            htmlCode += '</h2>';
-            htmlCode += '</div>';            
-            htmlCode += '<div class="panel-body">';
-            htmlCode += '<p>';
-            htmlCode += f;
-            htmlCode += '</p>';
-            htmlCode += '<p>';
-            htmlCode += g;
-            htmlCode += '</p>';
-            htmlCode += '<ul class="list-group">';
-            htmlCode += '<li class="list-group-item"><span class="label label-primary">';
-            htmlCode += h;
-            htmlCode += '</span>';
-            htmlCode += '<span class="badge">';
-            htmlCode += i;
-            htmlCode += '</span></li>';
-            htmlCode += '<li class="list-group-item"><span class="label label-warning">';
-            htmlCode += j;
-            htmlCode += '</span>';
-            htmlCode += '<span class="badge">';
-            htmlCode += k;
-            htmlCode += '</span></li></ul>';
-            htmlCode += '<div class="row panFooter">';
-            htmlCode += '<a href="#" class="btn btn-lg btn-primary">';
-            htmlCode += z;
-            htmlCode += '</a>';
-            htmlCode += '</div>';
-            htmlCode += '</div>';
-            htmlCode += '</div>';
-            htmlCode += '</div>';
-            
-            return htmlCode;
-        }
-        
-        function getJobs() {
-//            var htmlCode = getJobData();
-            var htmlCode = getJobHTML();
-            var area = _('JobList');
-            area.innerHTML = htmlCode;
-        }
-        
-        function firstRun() {
-            getJobs();
-            prepForm();
-        }
-        
-    </script>
 </head>
-<!--<body onload="hideAllandShowFAQ();">-->
-<!--<body onload="firstRun();">-->
-<body>
     
-<div id="frame" class="container col-md-12 col-lg-12">
-    <div class="swiper-container">
-        <div id="JobList" class="swiper-wrapper">
+<body onload="firstRun();">
+    
+    <div class="navbar navbar-default navbar-fixed-bottom">
+<!--        <div class="col-md-12 col-lg-12 panHeader">-->
+        <div class="col-md-12 col-lg-12">
+            <ul class="pager">
+                <li class="previous"><a href="#" class="button-prev col-md-2 col-lg-1 col-lg-offset-0">&larr; Older</a></li>
+                <li class=""><a href="#" data-toggle="modal" data-target="#myModalCreateJob" class="btn btn-warning col-md-6 col-lg-6 col-lg-offset-2">Create New Job</a></li>
+                <li class="next"><a href="#" class="button-next col-md-2 col-lg-1 col-lg-offset-0">Newer &rarr;</a></li>
+            </ul>
+        </div>
+        <div id="myNav">
         </div>
     </div>
-</div>
     
-<div class="container col-md-12 col-lg-12 panHeader navbar-fixed-bottom">
-    <ul class="pager">
-        <li class="previous"><a href="#" class="button-prev col-md-2 col-lg-1 col-lg-offset-0">&larr; Previous</a></li>
-        <li class=""><a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-warning col-md-6 col-lg-6 col-lg-offset-2">Create New Job</a></li>
-        <li class="next"><a href="#" class="button-next col-md-2 col-lg-1 col-lg-offset-0">Next &rarr;</a></li>
-    </ul>
-</div>
-    
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-<div class="modal-dialog">
+    <!-- Swiper Sites -->
+    <div id="frame" class="container col-md-12 col-lg-12">
+    <div class="swiper-container">
+        <div id="siteList" class="swiper-wrapper">
+            
+            <!-- 0 -->
+            <div class="swiper-slide">
+<!--            <div class="panel panel-primary">-->
+            <div class="panel panel-info">
+            <div class="panel-heading">
+            <h4 class="panel-title">Jobs</h4>
+            </div>
+            <div class="panel-body">
+            <p>View existing Jobs or tap the 'Create New Job' button below.</p>
+            <div class="row panFooter">
+            <a href="#" data-toggle="modal" data-target="#myModalCreateJob" class="btn btn-lg btn-primary">Create New Job</a>
+            </div>
+            </div>
+            </div>
+            </div>
 
-<!-- Modal content-->
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal">&times;</button>
-<h4 class="modal-title">Create New Job</h4>
-</div>
-<div class="modal-body" id="JobName">
-    
-<form class="form-horizontal">
-  <fieldset>
-    <div class="form-group">
-      <label for="forName" class="col-lg-2 control-label">Name</label>
-      <div class="col-lg-10">
-        <input type="text" class="form-control" id="formIdName" placeholder="Name">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="forLocation" class="col-lg-2 control-label">Location</label>
-      <div class="col-lg-10">
-        <input type="text" class="form-control" id="formIdLocation" placeholder="Location">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="forDate" class="col-lg-2 control-label">Date</label>
-      <div class="col-lg-10">
-        <input type="text" class="form-control" id="formIdDate" placeholder="Date">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="forTime" class="col-lg-2 control-label">Time</label>
-      <div class="col-lg-10">
-        <input type="text" class="form-control" id="formIdTime" placeholder="Time">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="textareaNotes" class="col-lg-2 control-label">Notes</label>
-      <div class="col-lg-10">
-        <textarea class="form-control" rows="3" id="textareaNotes" rows="5" cols="20" ></textarea>
-<!--        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-        <button type="reset" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="submit" class="btn btn-primary" data-dismiss="modal">Create New Job</button>
-      </div>
-    </div>
-  </fieldset>
-</form>
-    
-</div>
-</div>
-</div>
-</div>
-    
-<!--
-<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-<p class=" pull-right"><a id="NewProject" class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#myModal" role="button">Create New Job</a></p>
-<p class=" pull-left"><a id="BackButton" class="btn btn-default btn-lg" href="#" onclick="backAway(); return false;" role="button">Go Back</a></p>
-<p class=" pull-right"><a id="NewProject" class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#myModal" role="button">Create New Job</a></p>
--->
-    
-<!-- Link jQuery -->
-<script src="js/jquery-2.2.4.min.js"></script>
+            <!-- 1 -->
+            <div class="swiper-slide">
+<!--            <div class="panel panel-primary">-->
+            <div class="panel panel-info">
+            <div class="panel-heading">
+            <span class="badge pull-right">July 25, 2016</span>
+            <h2 class="panel-title">Forklift Operator</h2>
+            </div>
+            <div class="panel-body"><p>Dallas City Packing Inc</p>
+            <p>Took video of the forklift driver from different angles.</p>
+            <ul class="list-group">
+            <li class="list-group-item"><span class="label label-primary">Videos</span>
+            <span class="badge">1</span></li>
+            <li class="list-group-item"><span class="label label-warning">Pictures</span>
+            <span class="badge">0</span></li></ul>
+            <div class="row panFooter">
+            <a href="#" data-toggle="modal" data-target="#myModalEditJob" class="btn btn-lg btn-primary">Edit Job</a>
+            </div>
+            </div>
+            </div>
+            </div>
 
-<!-- Bootstrap JS -->
-<script src="js/bootstrap.min.js"></script>
+            <!-- 2 -->
+            <div class="swiper-slide">
+<!--            <div class="panel panel-primary">-->
+            <div class="panel panel-info">
+            <div class="panel-heading">
+            <span class="badge pull-right">July 25, 2016</span>
+            <h2 class="panel-title">Meat Cutter Position #1</h2>
+            </div>
+            <div class="panel-body"><p>Dallas City Packing Inc</p>
+            <p>Was shot in a tight location.</p>
+            <ul class="list-group">
+            <li class="list-group-item"><span class="label label-primary">Videos</span>
+            <span class="badge">2</span></li>
+            <li class="list-group-item"><span class="label label-warning">Pictures</span>
+            <span class="badge">5</span></li></ul>
+            <div class="row panFooter">
+            <a href="#" data-toggle="modal" data-target="#myModalEditJob" class="btn btn-lg btn-primary">Edit Job</a>
+            </div>
+            </div>
+            </div>
+            </div>
 
-<!-- Link jQuery -->
-<script src="js/jquery-2.2.4.min.js"></script>
+            <!-- 2 -->
+            <div class="swiper-slide">
+<!--            <div class="panel panel-primary">-->
+            <div class="panel panel-info">
+            <div class="panel-heading">
+            <span class="badge pull-right">July 25, 2016</span>
+            <h2 class="panel-title">Meat Cutter Position #2</h2>
+            </div>
+            <div class="panel-body"><p>Dallas City Packing Inc</p>
+            <p>Was shot in a tight location.</p>
+            <ul class="list-group">
+            <li class="list-group-item"><span class="label label-primary">Videos</span>
+            <span class="badge">2</span></li>
+            <li class="list-group-item"><span class="label label-warning">Pictures</span>
+            <span class="badge">10</span></li></ul>
+            <div class="row panFooter">
+            <a href="#" data-toggle="modal" data-target="#myModalEditJob" class="btn btn-lg btn-primary">Edit Job</a>
+            </div>
+            </div>
+            </div>
+            </div>
 
-<!-- Bootstrap JS -->
-<script src="js/bootstrap.min.js"></script>
+        </div>
+    </div>
+
+    <!-- Modal - Create Job -->
+    <div id="myModalCreateJob" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create New Job</h4>
+            </div>
+
+            <div class="modal-body" id="jobName">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="forName" class="col-lg-2 control-label">Name</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="formIdName" placeholder="Name">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="forLocation" class="col-lg-2 control-label">Location</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="formIdLocation" placeholder="Location">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="forDate" class="col-lg-2 control-label">Date</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="formIdDate" placeholder="Date">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="forTime" class="col-lg-2 control-label">Time</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="formIdTime" placeholder="Time">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="textareaNotes" class="col-lg-2 control-label">Notes</label>
+                            <div class="col-lg-10">
+                                <textarea class="form-control" rows="3" id="textareaNotes" rows="5" cols="20" ></textarea>
+                                <!--        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button type="reset" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary" data-dismiss="modal">Create New Job</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            
+            </div>
+        </div>
+    </div>
+        
+    <!-- Modal - Edit Job -->
+    <div id="myModalEditJob" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit Job</h4>
+            </div>
+
+            <div class="modal-body" id="jobName">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="forName" class="col-lg-2 control-label">Name</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="editIdName" placeholder="Name">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="forLocation" class="col-lg-2 control-label">Location</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="editIdLocation" placeholder="Location">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="forDate" class="col-lg-2 control-label">Date</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="editIdDate" placeholder="Date">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="forTime" class="col-lg-2 control-label">Time</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="editIdTime" placeholder="Time">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="textareaNotes" class="col-lg-2 control-label">Notes</label>
+                            <div class="col-lg-10">
+                                <textarea class="form-control" rows="3" id="textareaNotes" rows="5" cols="20" ></textarea>
+                                <!--        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button type="reset" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary" data-dismiss="modal">Edit Job</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            
+            </div>
+        </div>
+    </div>
+        
+    <!-- Swiper Sites -->
+    <!-- End HTML -->    
+    
+    <!-- Start Scripts -->
+    <!-- Link jQuery -->
+    <script src="js/jquery-2.2.4.min.js"></script>
 
     <!-- Swiper JS -->
     <script src="js/swiper.min.js"></script>
-
-    <!-- Initialize Swiper -->
-    <script>
+    
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript">
+        function firstRun() {
+            writeNav(2);
+            prepForm();
+        }
         
+        function _(x) {
+            return document.getElementById(x);
+        }
+
         function prepForm() {
             setDate();
             setTime();
@@ -552,9 +366,6 @@
             t.value = timeNow;
         }
         
-    $(document).ready(function () {
-        firstRun();
-        
         var swiper = new Swiper('.swiper-container', {
             nextButton: '.button-next',
             prevButton: '.button-prev',
@@ -570,39 +381,8 @@
                 modifier: 1
 //                slideShadows : true
             }
-        })
-    });
-        
-        /* windowDimensions */
-        function windowDimensions() { // prototype/jQuery compatible
-            var myWidth = 0, myHeight = 0;
-            if( typeof( window.innerWidth ) == 'number' ) {
-                    //Non-IE or IE 9+ non-quirks
-                    myWidth = window.innerWidth;
-                    myHeight = window.innerHeight;
-                } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
-                    //IE 6+ in 'standards compliant mode'
-                    myWidth = document.documentElement.clientWidth;
-                    myHeight = document.documentElement.clientHeight;
-                } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
-                //IE 5- (lol) compatible
-                myWidth = document.body.clientWidth;
-                myHeight = document.body.clientHeight;
-            }
-            
-            if (myWidth < 1) myWidth = screen.width; // emergency fallback to prevent division by zero
-            if (myHeight < 1) myHeight = screen.height; 
-            return [myWidth,myHeight];
-        }
-        
-        var dim = windowDimensions();
-//        myIframe = $('#frameI');
-        myIframe = $('#frame');
-        myIframe.height((dim[1]) + "px");
-        /* end windowDimensions */
-        
-</script>
-
-
+        });
+    </script>
+    
 </body>
 </html>
