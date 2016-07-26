@@ -35,6 +35,12 @@ function writeNav(page) {
         outNav += '<li class="default">';
     }
     outNav += '<a href="jobs.html">Jobs</a></li>';
+    if (page === 3) {
+        outNav += '<li class="active">';
+    } else {
+        outNav += '<li class="default">';
+    }
+    outNav += '<a href="camera.html">Camera</a></li>';
     outNav += '<li class="dropdown">';
     outNav += '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assets <span class="caret"></span></a>';
     outNav += '<ul class="dropdown-menu">';
