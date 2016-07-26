@@ -41,6 +41,7 @@ function writeNav(page) {
         outNav += '<li class="default">';
     }
     outNav += '<a href="camera.html">Camera</a></li>';
+    outNav += '<a href="camera2.html">Camera 2</a></li>';
     outNav += '<li class="dropdown">';
     outNav += '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assets <span class="caret"></span></a>';
     outNav += '<ul class="dropdown-menu">';
