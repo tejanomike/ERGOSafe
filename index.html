@@ -1,86 +1,410 @@
-<html>
-<head>
-    <!-- fill iPhone screen with canvas -->
-    <meta name="viewport" content="width=400" />
-    <title>Tracking Mouse and Touch Events on Canvas</title>
-    <script type="text/javascript">
-        var can, ctx, canX, canY, mouseIsDown = 0;
- 
-        function init() {
-            can = document.getElementById("can");
-            ctx = can.getContext("2d");
- 
-            can.addEventListener("mousedown", mouseDown, false);
-            can.addEventListener("mousemove", mouseXY, false);
-            can.addEventListener("touchstart", touchDown, false);
-            can.addEventListener("touchmove", touchXY, true);
-            can.addEventListener("touchend", touchUp, false);
- 
-            document.body.addEventListener("mouseup", mouseUp, false);
-            document.body.addEventListener("touchcancel", touchUp, false);
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Canvas over Video</title>
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Darkly theme -->
+        <link rel="stylesheet" href="css/darkly.min.css">
+
+
+        <style>
+            .canvasHome {
+                position: absolute;
+            }
+
+            .theVideo {
+                position: absolute;
+            }
+
+            .canMeasure {
+                visibility: hidden;
+            }
+
+            .wow {
+                background-color: cornflowerblue;
+            }
+            
+            .wow2 {
+                background-color: forestgreen;
+            }
+
+            .slider {
+                position: absolute;
+                top: 300px;
+                left: 85px;
+                width: 152px;
+                height: 52px;
+            }
+            .bar {
+                position: relative;
+                top: 30px;
+                width: 152px;
+                height: 2px;
+                background-color: #404040 ;
+            }
+            /*
+            .knob {
+            position: relative;
+            left: 100px;
+            border: 1px solid #404040;
+            background-color: #C0C0C0 ;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            text-align: center;
+            }
+            */
+
+            #spread {
+                height: 100%;
+                background-color: chartreuse;
+            }
+        </style>
+
+        <!-- Javascript -->
+        <script>
+            function _(x) {
+                var x = document.getElementById(x);
+                return x;
+            }
+
+            function _2d(x) {
+                var x = document.querySelector(x);
+                x.getContext("2d");
+                return x;
+            }
+        </script>
+
+
+    </head>
+    <!--  <body onload="init()">-->
+    <body>
+
+        <div class="row-fluid">
+            <div class="row-fluid col-xs-12 col-md-12 wow">
+                <!--        <div id="videoCover" class="container col-xs-6">-->
+                <div class="row-fluid col-xs-6 col-md-6">
+                    <div class="row-fluid col-xs-12 col-md-12">
+                        <canvas id="canMeasure"></canvas>
+                        <!--            <canvas id="canAlpha"></canvas>-->
+                        <video class="row" id="theVideo" autoplay loop>
+                            <source src="videos/videoplayback.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                        </video>
+                    </div>
+                    <div class="row-fluid col-xs-12 col-md-12">
+                        <div class="col-xs-3 col-md-3">
+                            <a href="#" class="btn btn-default col-xs-12 col-md-12 btnPlay" id="btnPlay"><span class="glyphicon glyphicon-pause"></span></a>
+                        </div>
+                        <div class="col-xs-3 col-md-3">
+<!--                            <a href="#" class="btn btn-default col-xs-12 col-md-12 btnMeasure" id="btnMeasure">Measure <span class="glyphicon glyphicon-eye-open"></span></a>-->
+                            <a href="#" class="btn btn-default col-xs-12 col-md-12 btnMeasure" id="btnMeasure">Measure <span class="glyphicon glyphicon-eye-close"></span></a>
+                        </div>
+                        <div class="col-xs-3 col-md-3">
+                            <a href="#" class="btn btn-default col-xs-12 col-md-12" onclick="toggleVideo();">Video</a>
+                        </div>            
+                    </div>
+                    <div class="row-fluid col-xs-12 col-md-12">
+                        <form>
+                            <label for="increment">Time Increment</label>
+                            <select name="increment" id="increment">
+                            <option value=".25" >.25
+                            <option selected value=".5" >.5
+                            <option value=".75" >.75
+                            <option value="1" >1
+                            <option value="1.25" >1.25
+                            <option value="1.5" >1.5
+                            <option value="1.75" >1.75
+                            <option value="2" >2
+                            </select>
+
+                            <br />
+                            <label for="videoLength">Video Length in seconds</label>
+                            <input type=text name="videoLength" id="videoLength" value="3">
+                            <br />
+                            <input type="button" id="addMoreRows" value="Create fields" onclick="addRows()" /><input type="reset">
+                        </form>                        
+                    </div>
+                </div>
+                <div class="container col-xs-6 col-md-6" id="spread">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <table id="tt" border="3" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th><span class="maintitle">Task</span></th>
+                                        <th colspan=7 align=left><span class="maintitle">Pallet lift</span></th>
+                                    </tr>
+
+                                    <tr>
+                                        <th colspan=2></th>
+                                        <th colspan=6><span class="subtitle">Input</span></th>
+                                    </tr>
+
+                                    <tr>
+                                        <th colspan=2></th>
+                                        <th colspan=4><span class="subtitle">Shoulder</span></th>
+                                        <th colspan=2><span class="subtitle">Back</span></th>
+                                    </tr>
+
+                                    <tr>
+                                        <th colspan=1>Video Time Code</th>
+                                        <th colspan=1>Step of Task</th>
+                                        <th colspan=1>Load<br /><span class="short">lbs</span></th>
+                                        <th colspan=1>HS<br /><span class="short">in.</span></th>
+                                        <th colspan=1>Vert<br /><span class="short">factor</span></th>
+                                        <th colspan=1>Latri<br /><span class="short">factor</span></th>
+                                        <th colspan=1>Load<br /><span class="short">lbs</span></th>
+                                        <th colspan=1>Bend<br /><span class="short">fraction</span></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <form name="vform" id="vform"></form>
+                                    <div id="dynamicInput"></div>
+                                    <div id="formValues"></div>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <!--
+<div class="row col-xs-12" id="alphaTools" >
+<p>Tools</p>
+<div class="slider" id="slider"
+onmousedown="mouseDown()" onmousemove="mouseXY()"
+ontouchstart="touchXY()" ontouchmove="touchXY()">
+<div class="bar"></div>
+<div id="knob" class="knob">
+<br />
+Alpha
+</div>
+</div>
+</div>
+-->
+        <!--
+<div class="row col-xs-12">
+<div class="container col-xs-6">
+div a1
+</div>
+<div class="container col-xs-6">
+div a2
+</div>
+</div>
+-->
+        <div class="row-fluid col-xs-12 col-md-12 wow2">
+
+        </div>
+        </div>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>      
+
+
+    <!-- Javascript -->
+    <script>
+        var vid = _("theVideo");
+
+        $(document).ready(function() {
+            /* initialize canvases */
+            setCanvases();
+
+            /* create spreadsheet fields */
+            buildSpreadsheet();
+
+            /* draw tools */
+            drawMeasure();
+
+            /* initialize buttons */
+            playButton = _("play");
+        })
+
+        $('.btnPlay').on('click', function() {
+            var video = $('#theVideo');
+            var button = $('.btnPlay');
+            if(video[0].paused) {
+                video[0].play();
+                button.children("span").toggleClass("glyphicon glyphicon-play", false);
+                button.children("span").toggleClass("glyphicon glyphicon-pause", true);
+            }
+            else {
+                video[0].pause();
+                button.children("span").toggleClass("glyphicon glyphicon-pause", false);
+                button.children("span").toggleClass("glyphicon glyphicon-play", true);
+            }
+        })
+        
+        $('.btnMeasure').on('click', function() {
+            var can = _('canMeasure');
+            var button = $('.btnMeasure');
+            
+            if(can.style.visibility == 'hidden') {
+//                can.visibility = 'visible';
+                button.children("span").toggleClass("glyphicon glyphicon-eye-close", false);
+                button.children("span").toggleClass("glyphicon glyphicon-eye-open", true);
+            }
+            else {
+//                can.visibility = 'hidden';
+                button.children("span").toggleClass("glyphicon glyphicon-eye-open", false);
+                button.children("span").toggleClass("glyphicon glyphicon-eye-close", true);
+            }
+            
+            toggle_visibility('canMeasure');
+        })
+
+        function setCanvases() {
+            var can = _('canMeasure');
+            can.style.visibility = 'hidden';
+            
+            setToVideoPosition('canMeasure');
+            
+            
+
         }
- 
-        function mouseUp() {
-            mouseIsDown = 0;
-            mouseXY();
+
+        function buildSpreadsheet() {
+            var frames = vid.length;
+//            alert(frames);
         }
- 
-        function touchUp() {
-            mouseIsDown = 0;
-            // no touch to track, so just show state
-            showPos();
+
+        function setToVideoPosition(element) {
+            var can = _(element);
+            can.style.top = vid.clientTop+"px";
+            can.style.left = vid.clientLeft+"px";
+            can.style.position = "absolute";
+            can.getContext('2d');
         }
- 
-        function mouseDown() {
-            mouseIsDown = 1;
-            mouseXY();
+
+        function setToVideoSize(element) {
+            var vid = _("theVideo");
+            var can = _(element);
+            can.style.height = vid.clientHeight+"px";
+            can.style.width = vid.clientWidth+"px";
+            can.style.top = vid.clientTop+"px";
+            can.style.left = vid.clientLeft+"px";
+            can.style.position = "absolute";
+            can.getContext('2d');
         }
- 
-        function touchDown() {
-            mouseIsDown = 1;
-            touchXY();
+
+        function drawMeasure() {
+            var can = _('canMeasure');
+            var ctx = can.getContext('2d');
+            var img = new Image();
+            img.src = "images/ruler.png";
+            img.onload = function() {
+                var val1 = Math.round((can.width / 2) - (img.width / 2 ));
+                var val2 = Math.round((can.height / 2) - (img.height / 2 ));
+                ctx.drawImage(img, 0, 0, img.width, img.height, val1, val2, img.width, img.height);
+            }
         }
- 
-        function mouseXY(e) {
-            if (!e)
-                var e = event;
-            canX = e.pageX - can.offsetLeft;
-            canY = e.pageY - can.offsetTop;
-            showPos();
+
+        function toggleMeasure() {
+            toggle_visibility('canMeasure');
         }
- 
-        function touchXY(e) {
-            if (!e)
-                var e = event;
-            e.preventDefault();
-            canX = e.targetTouches[0].pageX - can.offsetLeft;
-            canY = e.targetTouches[0].pageY - can.offsetTop;
-            showPos();
+
+        function toggleVideo() {
+            toggle_visibility('theVideo');
         }
- 
-        function showPos() {
-            // large, centered, bright green text
-            ctx.font = "24pt Helvetica";
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.fillStyle = "rgb(64,255,64)";
-            var str = canX + ", " + canY;
-            if (mouseIsDown)
-                str += " down";
-            if (!mouseIsDown)
-                str += " up";
-            ctx.clearRect(0, 0, can.width, can.height);
-            // draw text at center, max length to fit on canvas
-            ctx.fillText(str, can.width / 2, can.height / 2, can.width - 10);
-            // plot cursor
-            ctx.fillStyle = "white";
-            ctx.fillRect(canX -5, canY -5, 10, 10);
+
+        function toggle_visibility(id) {
+            var e = _(id);
+            if (e.style.visibility == 'visible')
+                e.style.visibility = 'hidden';
+            else
+                e.style.visibility = 'visible';
+        }
+
+        function drawCurve() {
+            var c = _('canAlpha').getContext("2d");
+            //            var c = document.querySelector("canAlpha").getContext("2d");
+            c.beginPath();
+            c.moveTo(10,90);
+            c.bezierCurveTo(10, 10, 90, 10, 50, 90);
+            c.lineTo(90, 10);
+            c.lineTo(10, 10);
+            c.closePath();
+            c.stroke();
+            //            draw('canAlpha', img, true, false);
+        }
+        
+        function addEndOfLine()
+        {
+            var eol = '';
+            eol+='<td align=right colspan=7><input type="submit" onclick="countFields();" /></td>';
+            eol+='<td align=right colspan=1><input type="reset" /></td>';
+            eol+='</tr></form></tbody>';
+            _("tt").insertRow(-1).innerHTML = eol;
+        }
+
+        function addLine(count)
+        {
+            var c = count.toString();
+            var index = c.indexOf(".");
+
+            if ((index == -1) && (c.length = 1))
+            {
+                dcount = c.concat(".0");
+            }
+            else
+                dcount = c;
+
+            field = '<tr><td align=middle><span class="data">'+dcount+'</span></td>';
+            field+='<td align=left><input type="text" size=5 name="step[]" /></td>';
+            field+='<td align=right><input type="text" size=5 name="shoulder_load[]" /></td>';
+            field+='<td align=right><input type="text" size=5 name="shoulder_hs[]" /></td>';
+            field+='<td align=right><input type="text" size=5 name="shoulder_vert[]" /></td>';
+            field+='<td align=right><input type="text" size=5 name="shoulder_latri[]" /></td>';
+            field+='<td align=right><input type="text" size=5 name="back_load[]" /></td>';
+            field+='<td align=right><input type="text" size=5 name="back_bend[]" /></td></tr>';
+            _("tt").insertRow(-1).innerHTML = field;
+        }
+
+        function addRows()
+        {
+            var n = _("increment");
+            var inc = parseFloat(n.options[n.selectedIndex].value);
+            var sec = _("videoLength").value;
+            var i = 0;
+            do
+            {
+                addLine(i);
+                i = (inc * 10 + i * 10) / 10;
+            } while (i < sec);
+            addLine(i);
+            addEndOfLine();
+        }
+
+        function countFields()
+        {
+            var str = '';
+            var elem1 = _n('step[]');
+            var elem2 = _n('shoulder_load[]');
+            var elem3 = _n('shoulder_hs[]');
+            var elem4 = _n('shoulder_vert[]');
+            var elem5 = _n('shoulder_latri[]');
+            var elem6 = _n('back_load[]');
+            var elem7 = _n('back_bend[]');
+
+            for (var i=0;i<elem1.length;i++)
+            {
+                str += elem1[i].value + "|" + elem2[i].value + "|" + elem3[i].value + "|" + elem4[i].value + "|" + elem5[i].value + "|" + elem6[i].value + "|" + elem7[i].value;
+                str += "<br />";
+            }
+            _('formValues').innerHTML = str;
         }
     </script>
- 
-</head>
-<body onload="init()">
-    <canvas id="can" height="400" width="600" style="background-color:black">
-    </canvas>
-</body>
+
+
+    </body>
 </html>
