@@ -1,5 +1,5 @@
 ﻿// Get a free key at http://openweathermap.org/. Replace the "Your_Key_Here" string with that key.
-var OpenWeatherAppKey = "Your_Key_Here";
+var OpenWeatherAppKey = "1ab1286f79ad3e8c72448d1b0b0a11c3";
 
 function getWeatherWithZipCode() {
 
