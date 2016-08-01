@@ -1,89 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
-      
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-2.2.4.min.js"></script>
+<html>
+    <head>
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com http://api.openweathermap.org 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+        <title>WeatherApp</title>
+    </head>
+    <body>
+        <div data-role="page" id="weather-page">
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+            <div data-role="header" class="header">
+                <h1 id="app-title">Weather App</h1>
+                <a href="/" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext" rel="external">Home</a>
+            </div>
 
-  </head>
-  <body>
-    <h3 class="center">Capture from Camera</h3>
+            <div role="main" class="ui-content">
+                <form>
+                    <label for="zip-code">Type your zip code:</label>
+                    <input id="zip-code-input" name="zip-code" placeholder="eg. 98001" required />
+                    <button id="get-weather-btn" data-role="button" data-icon="search">Find Weather</button>
+                </form>
 
-<!--
-      
-      <a href="#" class="btnCamera" role="button">from Camera</a>
-      <a href="#" class="btnGallery" role="button">from Gallery</a>
--->
-      
-      
-      <button id="btnCamera" class="btnCamera" role="button">From Camera</button>
-      <button id="btnGallery" class="btnGallery" role="button">From Gallery</button>
-      <a href="latlong.html">LatLong</a>
-      
-      
-      
-      
-      <script>
-          $(document).bind('deviceready', function() {
+                <ul id="weather-data" data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow not-displayed">
+                    <li data-role="list-divider" id="title" class="ui-li-divider ui-bar-a"></li>
+                    <li><span id="summary"><span id="temperature"></span> F <img src="" /></span></li>
+                    <li>Wind: <span id="wind"></span> knots</li>
+                    <li>Humidity: <span id="humidity"></span> %</li>
+                    <li>Visibility: <span id="visibility"></span></li>
+                    <li>Sunrise: <span id="sunrise"></span></li>
+                    <li>Sunset: <span id="sunset"></span></li>
+                </ul>
 
-              $('#btnCamera').bind('touchstart', function() {
-                  alert('camera');
-                  navigator.camera.getPicture(function(data) {
-                      $('.capture')
-                          .attr('src', 'data:image/jpeg;base64,' + data )
-                          .css('visibility', 'visible');
-                  }, function (error) {
-                      console.log('err');
-                  }, {
-                      destinationType: Camera.DestinationType.DATA_URL, 
-                      sourceType: Camera.PictureSourceType.CAMERA,
-                      allowEdit: false,
-                      targetWidth: 135,
-                      targetHeight: 200
-                  });
-              });
+                <div id="error-msg" class="not-displayed">
+                </div>
 
-              $('#btnGallery').bind('touchstart', function() {
-                  alert('gallery');
-                  navigator.camera.getPicture(function(data) {
-                      $('.capture')
-                          .attr('src', 'data:image/jpeg;base64,' + data )
-                          .css('visibility', 'visible');
-                  }, function (error) {
-                      console.log('err');
-                  }, {
-                      destinationType: Camera.DestinationType.DATA_URL, 
-                      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-                      allowEdit: false,
-                      targetWidth: 135,
-                      targetHeight: 200,
-                      mediaType: Camera.MediaType.PICTURE
-                  });
-              });
+            </div>
 
-              $('capture').load(function() {
-                  $(this)
-                      .css('left', Math.round(($('.panel').outerWidth() - $(this).outerWidth()) / 2) + 'px')
-                      .css('top', Math.round((270 - $(this).outerHeight()) / 2) + 'px');
-              })
+            <footer data-role="footer" data-position="fixed">
+                <h4>Visual Studio Tools for Cordova Demo</h4>
+            </footer>
 
-              
-              /* touchmove, touchend, touchstart */
-
-          })
-      </script>
-      
-    <!-- Phonegap -->
-    <script src="js/phonegap-1.1.0.js"></script>      
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+        <script type="text/javascript" src="scripts/index.js"></script>
+        <script src="scripts/jquery-2.2.3.min.js"></script>
+        <script src="scripts/jquery.mobile-1.4.5.min.js"></script>
+        <script src="scripts/weather.js"></script>
+    </body>
 </html>
