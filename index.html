@@ -1,94 +1,122 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <title>Capture Photo</title>
     <!--
-        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
-        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="css/index.css">
     -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com http://api.openweathermap.org 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-        
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
-        <title>WeatherApp</title>
-    </head>
-    <body>
-        <div data-role="page" id="weather-page">
+    <script type="text/javascript" charset="utf-8" src="js/phonegap.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value
+    // Wait for PhoneGap to connect with the device
+    //
+    document.addEventListener("deviceready",onDeviceReady,false);
+    // PhoneGap is ready to be used!
+    //
+    function onDeviceReady() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+    }
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoDataSuccess(imageData) {
+      // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+    }
 
-            <div data-role="header" class="header">
-                <h1 id="app-title">Weather App</h1>
-                <a href="/" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext" rel="external">Home</a>
+	// Called when a photo is successfully retrieved
+    //
+    function onPhotoFileSuccess(imageData) {
+      // Get image handle
+      console.log(JSON.stringify(imageData));
+
+   	  // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      smallImage.src = imageData;
+    }
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoURISuccess(imageURI) {
+      // Uncomment to view the image file URI
+      // console.log(imageURI);
+      // Get image handle
+      //
+      var largeImage = document.getElementById('largeImage');
+      // Unhide image elements
+      //
+      largeImage.style.display = 'block';
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      largeImage.src = imageURI;
+    }
+    // A button will call this function
+    //
+    function capturePhotoWithData() {
+      // Take picture using device camera and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
+    }
+    function capturePhotoWithFile() {
+        navigator.camera.getPicture(onPhotoFileSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
+    }
+
+    // A button will call this function
+    //
+    function getPhoto(source) {
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+        destinationType: destinationType.FILE_URI,
+        sourceType: source });
+    }
+    // Called if something bad happens.
+    //
+    function onFail(message) {
+      alert('Failed because: ' + message);
+    }
+    </script>
+</head>
+<body>
+    <button onclick="capturePhotoWithData();">Capture Photo With Image Data</button> <br>
+    <button onclick="capturePhotoWithFile();">Capture Photo With Image File URI</button> <br>
+    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
+    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+    <img style="display:none;" id="largeImage" src="" />
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+
+    <!--
+        <div class="app">
+            <h1>Apache Cordova</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
             </div>
+        </div>        
+    -->
 
-            <div role="main" class="ui-content">
-                <form>
-                    <label for="zip-code">Type your zip code:</label>
-                    <input id="zip-code-input" name="zip-code" placeholder="eg. 98001" required />
-                    <button id="get-weather-btn" data-role="button" data-icon="search">Find Weather</button>
-                </form>
-
-                <ul id="weather-data" data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow not-displayed">
-                    <li data-role="list-divider" id="title" class="ui-li-divider ui-bar-a"></li>
-                    <li><span id="summary"><span id="temperature"></span> F <img src="" /></span></li>
-                    <li>Wind: <span id="wind"></span> knots</li>
-                    <li>Humidity: <span id="humidity"></span> %</li>
-                    <li>Visibility: <span id="visibility"></span></li>
-                    <li>Sunrise: <span id="sunrise"></span></li>
-                    <li>Sunset: <span id="sunset"></span></li>
-                </ul>
-
-                <div id="error-msg" class="not-displayed">
-                </div>
-
-            </div>
-
-            <div>
-                <button id="imageCapture">IMAGE</button>
-                <button id="videoCapture">VIDEO</button> 
-            </div>
-
-            <footer data-role="footer" data-position="fixed">
-                <h4>Visual Studio Tools for Cordova Demo</h4>
-            </footer>
-
-        </div>
-
-        <script>
-       document.getElementById("imageCapture").addEventListener("click", imageCapture);
-       document.getElementById("videoCapture").addEventListener("click", videoCapture);
-
-function videoCapture() {
-
-   var options = {
-      limit: 1,
-      duration: 10
-   };
-
-   navigator.device.capture.captureVideo(onSuccess, onError, options);
-
-   function onSuccess(mediaFiles) {
-      var i, path, len;
-
-      for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-         path = mediaFiles[i].fullPath;
-         console.log(mediaFiles);
-      }
-   }
-
-   function onError(error) {
-      navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
-   }
-
-}
-
-        </script>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="scripts/platformOverrides.js"></script>
-        <script type="text/javascript" src="scripts/index.js"></script>
-        <script src="scripts/jquery-2.2.3.min.js"></script>
-        <script src="scripts/jquery.mobile-1.4.5.min.js"></script>
-        <script src="scripts/weather.js"></script>
-    </body>
+</body>
 </html>
