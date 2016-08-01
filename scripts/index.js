@@ -10,15 +10,22 @@
     function onDeviceReady() {
         // Handle the Cordova pause and resume events
         document.addEventListener( 'pause', onPause.bind( this ), false );
-        document.addEventListener( 'resume', onResume.bind( this ), false );
+        document.addEventListener('resume', onResume.bind(this), false);
+
+        document.getElementById("btnTakePhoto").onclick = function () {
+            navigator.camera.getPicture(function (imageURI) {
+                var lastPhotoContainer = document.getElementById('lastPhoto');
+                alert('good');
+                lastPhotoContainer.innerHTML = "<img src='" + imageURI + "' style='width: 75%;' />";
+            }, null, null);
+        };
         
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
-
-        $('#get-weather-btn').click(getWeatherWithZipCode);
-        getWeatherWithGeoLocation();
-
-
-
+        var parentElement = document.getElementById('deviceready');
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
     };
 
     function onPause() {
